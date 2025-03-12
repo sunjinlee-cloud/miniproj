@@ -4,28 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        * {box-sizing: border-box;}
-        .mainBoard {width: 69.4444%; margin: 0 auto; padding: 20px 40px;}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet"><style>
+        *{margin: 0; padding: 0;box-sizing: border-box; font-family: "Poor Story", system-ui; font-weight: 300;}
+        body{ width: 1000px;margin: 0 auto;}
+        ul{list-style: none;}
+        li{display: inline-block;}
+        a{color: black; text-decoration: none;}
+        
+
+        /* 헤더 영역 */
+        header{
+            border-bottom: 1px solid #F88257;
+            width: 1000px;
+            height: 90px;
+            margin: 0 auto;
+        }
+        .menu{
+            overflow: hidden;
+        }
+        .menu > li{
+
+            width: 100px;
+            height: 90px;
+            float: right;
+            line-height: 90px;
+        }
+        /* 푸터 영역 */
+        footer{
+            height: 120px;
+            border-top: 1px solid #F88257;
+            font-weight: 100;
+            font-size: 10px;
+            text-align: center;
+            padding-top: 25px;
+        }
+        .underminimenu{
+            margin-bottom: 10px;
+        }
+        .underminimenu ul{
+            font-size: small; 
+            margin-bottom: 5px;
+        }
+
+        .mainBoard {width: 1000px; margin: 0 auto; padding: 20px 40px; font-family: "Noto Serif KR", serif;}
         .section {width: 100%; height: 20px; overflow: hidden;}
         .section .leftBox{float: left;}
         .section .rightBox{float: right;}
-        .article {width: 100%; border: 1px solid blue; padding: 5%;}
-        .card {margin: 5%; width: 80%; height: 20%; overflow: hidden; border: 1px solid red; position: relative;
-            padding-left: 5%;}
-        .card .cardLeft {height: 7em; width: 7em; display: block; float: left;}
+        .article {width: 100%;}
+        .card {margin: 5% auto; padding: 15px; width: 90%; height: 120px; overflow: hidden; 
+            border: 1px solid #F88257; border-bottom: 2px solid #F88257; position: relative;}
+        .card .cardLeft {height: 100%; width: 25%; display: block; float: left;}
         .card .cardLeft .a {height: 90%; width: 90%; margin: 5% auto; display: block; background-image: url("dog.jpg"); 
             background-repeat: no-repeat; background-size: cover; background-position: center;}
-        .card .cardMiddle {height: 90%; float: left;}
-        .card .cardMiddle .tagBox {overflow: hidden;}
-        .card .cardMiddle .tagBox .tag {display: inline-block;}
-        .card .cardRight {height: 100%; width: 25%; float: right;}
-        .doneOrNot {position: absolute; top: -10px; left: -10px; z-index: 100; border: 1px solid orange;}
+        .card .cardMiddle {height: 100%; width: 50%; float: left; margin: 0 auto; 
+            }
+        .card .cardMiddle .cardMiddleUpper {height: 50%; width: 100%; }
+        .card .cardMiddle .cardMiddleUpper h4 {margin-left: 10px; padding-top: 25px; line-height: 100%; font-weight: 800;}
+        .card .cardMiddle .tagBox {height: 50%; width: 100%; overflow: hidden; padding: 10px;}
+        .card .cardMiddle .tagBox .tag {display: inline-block; margin: 0 10px;}
+        .card .cardRight {display: block; height: 100%; width: 25%; float: right; margin: 0 auto;
+            overflow: hidden;}
+        .card .cardRight .location {float: left; width: 100%; height: 50%; text-align: center; line-height: 100%; 
+            padding: 10px auto;}
+        .card .cardRight .price {float: left; width: 100%; height: 50%; text-align: center; line-height: 100%; 
+            padding: 10px auto;}
+        .doneOrNot {position: absolute; top: 0px; left: 0px; z-index: 100; }
 
     </style>
 </head>
 <body>
-    
+    <header>
+        <ul class = "menu">
+            <li style="float: left;"><a href=""><img src="KakaoTalk_20250311_153446246.png" alt="logo" width="100px"></a></li>
+            <li><a href="">로그아웃</a></li>
+            <li><a href="">마이페이지</a></li>
+            <li><a href="">고객지원</a></li>
+        </ul>
+    </header>
+
     <div class="mainBoard">
         <div class="section">
             <div class="leftBox">
@@ -43,14 +101,17 @@
                         <a class="a" href="유저프로필"></a>
                     </div>
                     <div class="cardMiddle">
-                        <h4>3살 말잘듣는 비숑아가 산책시켜주실 분 구해요</h4>
+                        <div class="cardMiddleUpper"><h4>3살 말 잘 듣는 비숑아가 산책시켜주실 분 구해요</h4></div>
                         <div class="tagBox">
-                            <div class="tag tags1">#말잘듣는 순딩이</div>
+                            <div class="tag tags1">#순딩이</div>
                             <div class="tag tags2">#1시간정도 원해요</div>
                             <div class="tag tags3">#주 2회 좋아요</div>
                         </div>
                     </div>
-                    <div class="cardRight"><div class="price">15,000원</div></div>
+                    <div class="cardRight">
+                        <div class="location">역삼동</div>
+                        <div class="price">15,000원</div>
+                    </div>
                     <div class="doneOrNot">
                         구인 중
                     </div>
@@ -60,14 +121,17 @@
                         <a class="a" href="유저프로필"></a>
                     </div>
                     <div class="cardMiddle">
-                        <h4>3살 말잘듣는 비숑아가 산책시켜주실 분 구해요</h4>
+                        <div class="cardMiddleUpper"><h4>3살 말 잘 듣는 비숑아가 산책시켜주실 분 구해요</h4></div>
                         <div class="tagBox">
-                            <div class="tag tags1">#말잘듣는 순딩이</div>
+                            <div class="tag tags1">#순딩이</div>
                             <div class="tag tags2">#1시간정도 원해요</div>
                             <div class="tag tags3">#주 2회 좋아요</div>
                         </div>
                     </div>
-                    <div class="cardRight"><div class="price">15,000원</div></div>
+                    <div class="cardRight">
+                        <div class="location">역삼동</div>
+                        <div class="price">15,000원</div>
+                    </div>
                     <div class="doneOrNot">
                         구인 중
                     </div>
@@ -77,14 +141,17 @@
                         <a class="a" href="유저프로필"></a>
                     </div>
                     <div class="cardMiddle">
-                        <h4>3살 말잘듣는 비숑아가 산책시켜주실 분 구해요</h4>
+                        <div class="cardMiddleUpper"><h4>3살 말 잘 듣는 비숑아가 산책시켜주실 분 구해요</h4></div>
                         <div class="tagBox">
-                            <div class="tag tags1">#말잘듣는 순딩이</div>
+                            <div class="tag tags1">#순딩이</div>
                             <div class="tag tags2">#1시간정도 원해요</div>
                             <div class="tag tags3">#주 2회 좋아요</div>
                         </div>
                     </div>
-                    <div class="cardRight"><div class="price">15,000원</div></div>
+                    <div class="cardRight">
+                        <div class="location">역삼동</div>
+                        <div class="price">15,000원</div>
+                    </div>
                     <div class="doneOrNot">
                         구인 중
                     </div>
@@ -94,14 +161,17 @@
                         <a class="a" href="유저프로필"></a>
                     </div>
                     <div class="cardMiddle">
-                        <h4>3살 말잘듣는 비숑아가 산책시켜주실 분 구해요</h4>
+                        <div class="cardMiddleUpper"><h4>3살 말 잘 듣는 비숑아가 산책시켜주실 분 구해요</h4></div>
                         <div class="tagBox">
-                            <div class="tag tags1">#말잘듣는 순딩이</div>
+                            <div class="tag tags1">#순딩이</div>
                             <div class="tag tags2">#1시간정도 원해요</div>
                             <div class="tag tags3">#주 2회 좋아요</div>
                         </div>
                     </div>
-                    <div class="cardRight"><div class="price">15,000원</div></div>
+                    <div class="cardRight">
+                        <div class="location">역삼동</div>
+                        <div class="price">15,000원</div>
+                    </div>
                     <div class="doneOrNot">
                         구인 중
                     </div>
@@ -111,21 +181,39 @@
                         <a class="a" href="유저프로필"></a>
                     </div>
                     <div class="cardMiddle">
-                        <h4>3살 말잘듣는 비숑아가 산책시켜주실 분 구해요</h4>
+                        <div class="cardMiddleUpper"><h4>3살 말 잘 듣는 비숑아가 산책시켜주실 분 구해요</h4></div>
                         <div class="tagBox">
-                            <div class="tag tags1">#말잘듣는 순딩이</div>
+                            <div class="tag tags1">#순딩이</div>
                             <div class="tag tags2">#1시간정도 원해요</div>
                             <div class="tag tags3">#주 2회 좋아요</div>
                         </div>
                     </div>
-                    <div class="cardRight"><div class="price">15,000원</div></div>
+                    <div class="cardRight">
+                        <div class="location">역삼동</div>
+                        <div class="price">15,000원</div>
+                    </div>
                     <div class="doneOrNot">
                         구인 중
                     </div>
                 </div>    
         </div>
     </div>
-
+    <footer>
+        <div class="underminimenu">
+            <ul style="">
+                <li><a href="">소개</a></li>|
+                <li><a href="">메인서비스</a></li>|
+                <li><a href="">고객지원</a></li>|
+                <li><a href="">이용약관</a></li>|
+                <li><a href="">개인정보처리방침</a></li>
+            </ul>
+            <p>(주)펫모시깽이 | 대표 박인욱 | 서울 강남구 테헤란로7길 7 (역삼동) 5층 | 대표 전화번호 : 010-1234-1234<br>
+                사업자 등록 번호 : 123-45-67890 | 어쩌고저쩌고 | 있어보이는 텍스트 (p 태그 )</p>
+        </div>
+        <div class="infoarea">
+            <p>Copyright 2025 Pet © All rights reserved.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
