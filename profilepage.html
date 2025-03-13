@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css" />
     <style>
         *{margin: 0; padding: 0;box-sizing: border-box;}
         /*body{ width: 1000px;margin: 0 auto;}*/
@@ -57,41 +59,46 @@
         .mainBoard .section .profile {text-align: center;  padding: 40px;}
         .mainBoard .section .profile .profilePhoto{width: 100%; text-align: center;}
         .mainBoard .section .profile .profilePhoto > img {width: 200px; height: auto;}
+        .mainBoard .section .profile .nicknameCard {display: inline-block; font-size: 20px;}
+        .mainBoard .section .profile .nickname {display: inline-block; font-size: 35px;}
         .mainBoard .section .profile .profileUnder{overflow: hidden; padding: 40px;}
         .mainBoard .section .profile .profileUnder .num{float: left; width: 33.3%; padding: 5px; 
-            position: relative; }
+            position: relative; font-size: 30px;}
         .mainBoard .section .profile .profileUnder .num .numTop{position: absolute; top: -10px; left: -10px;
             }
         .mainBoard .section .profile .profileUnder .avgScore{float: left; width: 33.3%; padding: 5px;
-            position: relative;}
+            position: relative; font-size: 30px;}
         .mainBoard .section .profile .profileUnder .avgScoreTop{position: absolute; top: -10px; left: -10px;
             }
         .mainBoard .section .profile .profileUnder .avgPay{float: left; width: 33.3%; padding: 5px;
-            position: relative;}
+            position: relative; font-size: 30px;}
         .mainBoard .section .profile .profileUnder .avgPayTop{position: absolute; top: -10px; left: -10px;
             }
+        .top {font-size: 20px;}
         .mainBoard .section .profile .introduction {border: 1px solid red; margin: 40px; }
         .top{font-size: 12px;}
         
-        .mainBoard .section .jobsTaken {width: 49.5%; text-align: center; position: relative; margin: 50px 0;
-            border: 1px solid cadetblue; padding: 40px; display: inline-block;}
-        .mainBoard .section .jobsTaken .jobsTakenTitle{width: 100%; padding: 30px;}
+        .mainBoard .section .jobsTaken {width: 49.5%; height: 300px; text-align: center; position: relative; margin: 50px 0;
+             padding: 40px; display: inline-block;}
+        .mainBoard .section .jobsTaken .jobsTakenTitle{width: 100%; padding: 30px; }
+        .mainBoard .section .jobsTaken .jobsTakenTitle .title {float: left; font-size: 20px;}
+        .mainBoard .section .jobsTaken .jobsTakenTitle .takenListMore{float: right; font-size: 20px;}
         .mainBoard .section .jobsTaken .jobsTakenBoard{width: 100%; overflow: hidden; position: relative;
             padding: 15px;}
         .mainBoard .section .jobsTaken .jobsTakenBoard .jobsTakenList{width: 100%; height: 33.3%; float: left;
-            margin: 0.3em;}
-        .mainBoard .section .jobsTaken .takenListMore{display: inline-block;
-            position: absolute; right: 25%; bottom: 10px;}
+            margin: 0.3em; font-size: 15px;}
+        
 
-        .mainBoard .section .jobsGiven {width: 49.5%; display: inline-block; text-align: center; position: relative; 
-            margin: 50px 0; border: 1px solid cadetblue; padding: 40px;}
-        .mainBoard .section .jobsGiven .jobsGivenTitle{width: 100%; padding: 30px;}
+        .mainBoard .section .jobsGiven {width: 49.5%; height: 300px; display: inline-block; text-align: center; position: relative; 
+            margin: 50px 0;  padding: 40px;}
+        .mainBoard .section .jobsGiven .jobsGivenTitle{width: 100%; padding: 30px; font-size: 20px;}
+        .mainBoard .section .jobsGiven .jobsGivenTitle .title {float: left; font-size: 20px;}
+        .mainBoard .section .jobsGiven .jobsGivenTitle .givenListMore{float: right;}
         .mainBoard .section .jobsGiven .jobsGivenBoard {width: 100%; overflow: hidden; position: relative;
             padding: 15px;}
         .mainBoard .section .jobsGiven .jobsGivenBoard .jobsGivenList{width: 100%; height: 33.3%; float: left;
-            margin: 0.3em;}
-        .mainBoard .section .jobsGiven .givenListMore{display: inline-block;
-            position: absolute; right: 25%; bottom: 10px;}
+            margin: 0.3em; font-size: 15px;}
+        
 
         
 
@@ -111,11 +118,20 @@
         <div class="section">
             <div class="profile"> <!-- 프로필카드영역-->
                 <div class="profilePhoto"><img src="profile.png" alt="프로필사진"></div>
-                <div class="nickname">참붕어빵<i class="bi bi-brush" style="width: 10px;"></i></div>
+                <div class="nicknameCard">
+                    <div class="nickname">참붕어빵</div>
+                    님
+                </div>
                 <div class="profileUnder">
-                    <div class="num"><div class="top numTop">맡은 건 수</div>10건</div>
-                    <div class="avgScore"><div class="top avgScoreTop">평균 평점</div>8.9점</div>
-                    <div class="avgPay"><div class="top avgPayTop">평균 의뢰금액</div>17,000원</div>
+                    <div class="num">
+                        <div class="top numTop"><i class="bi bi-person-raised-hand"></i>맡은 건 수</div>
+                        10 건</div>
+                    <div class="avgScore">
+                        <div class="top avgScoreTop"><i class="bi bi-star"></i>평균 평점</div>
+                        8.9 점</div>
+                    <div class="avgPay">
+                        <div class="top avgPayTop"><i class="bi bi-coin"></i>평균 의뢰금액</div>
+                        17,000 원</div>
                 </div>
                 <div class="introduction">
                     자기소개...<br>
@@ -126,20 +142,25 @@
                 </div>
             </div>
             <div class="jobsTaken"> <!-- 맡은 건 내역 -->
-                <div class="jobsTakenTitle">맡은 건 내역</div>
-                <div class="jobsTakenBoard">
-                    <div class="jobsTakenList">말티즈 할머니 바깥공기 쐬어 주실 분</div>
-                    <div class="jobsTakenList">비숑 쌍둥이 산책 시켜 주세요</div>
-                    <div class="jobsTakenList">리트리버 밤 산책 가능하신 분?</div>
+                <div class="jobsTakenTitle">
+                    <div class="title">맡은 건 내역</div>
+                    <div class="takenListMore"><i class="bi bi-three-dots"></i></div>
                 </div>
-                <div class="takenListMore">more...</div>
+                <div class="jobsTakenBoard">
+                    <div class="jobsTakenList"><i class="bi bi-chevron-right"></i>말티즈 할머니 바깥공기 쐬어 주실 분</div>
+                    <div class="jobsTakenList"><i class="bi bi-chevron-right"></i>비숑 쌍둥이 산책 시켜 주세요</div>
+                    <div class="jobsTakenList"><i class="bi bi-chevron-right"></i>리트리버 밤 산책 가능하신 분?</div>
+                </div>
+                
             </div>
             <div class="jobsGiven"> <!-- 글 쓴 내역-->
-                <div class="jobsGivenTitle">작성 글 내역</div>
-                <div class="jobsGivenBoard">
-                    <div class="jobsGivenList">화이트포메 산책 시켜주세요</div>
+                <div class="jobsGivenTitle">
+                    <div class="title">작성 글 내역</div>
+                    <div class="givenListMore"><i class="bi bi-three-dots"></i></div>
                 </div>
-                <div class="givenListMore">more...</div>
+                <div class="jobsGivenBoard">
+                    <div class="jobsGivenList"><i class="bi bi-chevron-right"></i>화이트포메 산책 시켜주세요</div>
+                </div>
             </div>
         </div>
     </div>
