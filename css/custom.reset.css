@@ -1,0 +1,14 @@
+/* 공통으로 적용될 디자인 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Noto+Serif+KR:wght@200..900&display=swap');
+* {padding: 0; margin: 0; box-sizing: border-box;}
+img {max-width: 100%; height: auto;}
+ul, li, dd, dl, ol {list-style: none;}
+html, body {font-family: "Noto Sans KR", sans-serif;
+    font-optical-sizing: auto; font-weight: 100; font-style: normal;}
+
+/* 브라우저 별 input태그의 기본 디자인은 조금씩 다를 수 있다. =>
+기본 디자인을 지우고 직접 디자인해서 브라우저 별 디자인을 통일시킨다.*/
+/* input[type=checkbox], input[type=radio] {
+    appearance: none; -webkit-appearance: none; -moz-appearance: none;
+    그리고 내가 디자인한걸 여기 넣기
+} */

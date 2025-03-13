@@ -1,0 +1,46 @@
+.navbar {margin-bottom: 0; border-radius: 0;}
+.navbar-inverse {background-color: rgb(139, 126, 197); border-color: rgb(139, 126, 197);}
+.navbar-inverse .navbar-nav>li>a:focus {background-color: rgb(90, 76, 148);}
+.navbar-inverse .navbar-nav>li>a:hover {background-color: rgb(90, 76, 148);}
+.navbar-inverse .navbar-nav>.open>a {background-color: rgb(90, 76, 148);}
+.navbar-inverse .navbar-nav>.open>a:hover {background-color: rgb(90, 76, 148);}
+.navbar-brand {padding: 5px;}
+
+.navbar-inverse .navbar-nav>.active>a {background-color: rgb(90, 76, 148);}
+.form-control {border-radius: 0;}
+.btn {border-radius: 0;}
+.form-control:focus {border-color: #ccc; -webkit-box-shadow: none; box-shadow: none;}
+.carousel-control.left, .carousel-control.right {background-image: none;}
+
+
+.prod-list {border: 1px solid rgb(248, 216, 185); padding: 5px; text-align: center;}
+.prod-link >li[class*=col-] {padding: 5px;}
+.prod-link {display: inline-block; border: 1px solid rgb(248, 219, 192); position: relative;}
+.arrow {position: absolute; left: 10px; bottom: 10px; background-color: rgb(207, 205, 205); padding: 10px 15px; 
+    color: white;}
+.prod-link >.hover{opacity: 0; background-color: #50a0ff;}
+.prod-link:hover {border-color: #50a0ff;}
+.prod-link:hover >.hover{opacity: 1;}
+
+
+.card { padding: 10px; color: rgb(0, 0, 0);}
+.card >img {width: 80%; margin: 0 auto;}
+.leg {margin: 0 auto; overflow: hidden; width: 100%;}
+.leg >p {margin: 0;}
+.leg >.left {display: inline-block; overflow: hidden;}
+.leg >.left >.left1 {float: left;}
+.right {float: right; font-weight: 900;}
+.left2 {display: inline-block; width: 100%;}
+.left3 {display: inline-block; width: 100%;}
+.leg >.right {float: right;}
+.leg >.under {position: relative; height: 110px;}
+.under >.left3 {position: absolute; top: 0; width: 100%;}
+.left3.hover {position: absolute; top: 0; width: 200px; opacity: 0; overflow: hidden;}
+.card:hover .left3.hover {opacity: 1; transition: 1s ease-in-out;}
+.left3.hover >a {float: left; width: 20%; box-sizing: border-box;}
+
+.heart {color: red; margin-left: 3px;}
+.cart {color: green; margin-left: 3px;}
+
+.join-form{box-shadow: 0 8px 16px rgb(0, 0, 0, 0.7); margin: 0 auto; float: none;
+    padding: 30px;}
