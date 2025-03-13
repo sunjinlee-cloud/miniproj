@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0;box-sizing: border-box; font-family: "Poor Story", system-ui; font-weight: 300;}
+        body{ width: 1000px;margin: 0 auto;}
+        ul{list-style: none;}
+        li{display: inline-block;}
+        a{color: black; text-decoration: none;}
+        
+
+        /* 헤더 영역 */
+        header{
+            border-bottom: 1px solid #F88257;
+            width: 1000px;
+            height: 90px;
+            margin: 0 auto;
+        }
+        .menu{
+            overflow: hidden;
+        }
+        .menu > li{
+
+            width: 100px;
+            height: 90px;
+            float: right;
+            line-height: 90px;
+        }
+        /* 푸터 영역 */
+        footer{
+            height: 120px;
+            border-top: 1px solid #F88257;
+            font-weight: 100;
+            font-size: 10px;
+            text-align: center;
+            padding-top: 25px;
+        }
+        .underminimenu{
+            margin-bottom: 10px;
+        }
+        .underminimenu ul{
+            font-size: small; 
+            margin-bottom: 5px;
+        }
+
+        .box {text-align: center;}
+        .box .title {margin: 30px;}
+        .box .card {padding: 10px;}
+    </style>
+</head>
+<body>
+    <header>
+        <ul class = "menu">
+            <li style="float: left;"><a href=""><img src="KakaoTalk_20250311_153446246.png" alt="logo" width="100px"></a></li>
+            <li><a href="">로그인</a></li>
+        </ul>
+    </header>
+
+    <section class="box">
+        <div class="title"><h2>회원 가입하기</h2></div>
+        <div class="card">
+            <form action="" method="post">
+                <p>ID(EMAIL)</p> <input type="text" class="id" placeholder="ID를 입력하세요"> 
+                <button type="button" class="idMultiple">ID 중복 확인</button> 
+                <p>비밀번호</p><input type="password" class="pw" placeholder="비밀번호를 입력하세요">
+                <p>재입력 </p><input type="password" class="pw" placeholder="비밀번호를 한번 더 입력하세요">
+                <div class="notSame">비밀번호가 일치하지 않습니다.</div>
+                <p>닉네임</p> <input type="text" class="nickname" placeholder="ID를 입력하세요"> 
+                <button type="button" class="idMultiple">닉네임 중복 확인</button>
+                <p>주소</p> <input type="text" class="address" placeholder="주소를 입력하세요">
+                <p>연락처</p> <input type="text" class="phone" placeholder="010-1234-1234">
+                <p>성별</p> <input type="radio" id="male" name="gender" value="M"><label for="male">남</label>
+                <input type="radio" id="female" name="gender" value="F"><label for="female">여</label>
+                <textarea name="introduction" id="introduction" placeholder="자기소개(선택사항)"></textarea>
+            </form>
+        </div>
+        <div class="under"><button type="button" class="submitBtn">가입하기</button></div>
+    </section>
+
+    <footer>
+        <div class="underminimenu">
+            <ul style="">
+                <li><a href="">소개</a></li>|
+                <li><a href="">메인서비스</a></li>|
+                <li><a href="">고객지원</a></li>|
+                <li><a href="">이용약관</a></li>|
+                <li><a href="">개인정보처리방침</a></li>
+            </ul>
+            <p>(주)펫모시깽이 | 대표 박인욱 | 서울 강남구 테헤란로7길 7 (역삼동) 5층 | 대표 전화번호 : 010-1234-1234<br>
+                사업자 등록 번호 : 123-45-67890 | 어쩌고저쩌고 | 있어보이는 텍스트 (p 태그 )</p>
+        </div>
+        <div class="infoarea">
+            <p>Copyright 2025 Pet © All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
