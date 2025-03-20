@@ -1,0 +1,391 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    display: inline-block;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+/* 헤더 영역 */
+header {
+    border-bottom: 1px solid #F88257;
+    width: 1000px;
+    height: 90px;
+    margin: 0 auto;
+    background-color: white;
+}
+
+.menu {
+    overflow: hidden;
+}
+
+.menu>li {
+    width: 100px;
+    height: 90px;
+    float: right;
+    line-height: 90px;
+}
+
+/* 메인 영역 */
+section {
+    height: 100%;
+    padding: 50px 50px;
+}
+
+/* 푸터 영역 */
+footer {
+    height: 120px;
+    border-top: 1px solid #F88257;
+    font-weight: 100;
+    font-size: 10px;
+    text-align: center;
+    padding-top: 25px;
+    background-color: white
+}
+
+
+
+
+/* 
+메인보드 
+*/
+
+.underminimenu {
+    margin-bottom: 10px;
+}
+
+.underminimenu ul {
+    font-size: small;
+    margin-bottom: 5px;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+}
+
+input,
+textarea {
+    border: none;
+}
+
+.mb-name {
+    overflow: hidden;
+    height: 80px;
+}
+
+.mb-name>li:nth-child(1) {
+    float: left;
+    font-size: 30px;
+    width: 80%;
+}
+
+.mb-name>li:nth-child(1)>input {
+    width: 100%;
+    height: 60px;
+    font-size: 30px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #f882570e;
+}
+
+.mb-name>li:nth-child(2)>#btn {
+    float: right;
+    width: 100%;
+    height: 100%;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #F88257;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 10px;
+}
+
+input::placeholder {
+    color: rgba(0, 0, 0, 0.11);
+}
+
+.mb-name>li:nth-child(2),
+.mb-name>li:nth-child(3) {
+    float: right;
+}
+
+.active {
+    display: block;
+    animation: fade-in 0.5s ease-in-out;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        margin-top: 320px;
+    }
+
+    to {
+        opacity: 1;
+        margin-top: 0px;
+    }
+}
+
+/* 주소 / 금액 */
+.mb-address {
+    margin: 10px 0;
+    font-size: 15px;
+}
+
+.mb-address li input {
+    width: 100%;
+    height: 30px;
+    font-size: 20px;
+}
+
+/* 동물정보 */
+.mb-pet {
+    display: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    margin: 20px 0;
+}
+
+.mb-pet.active {
+    height: 300px;
+    transition: height 0.5s;
+}
+
+.mb-left {
+    width: 40%;
+    height: 80%;
+}
+
+.mb-petpic {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    margin-top: 27px;
+}
+
+.mb-petpic img {
+    width: 270px;
+    border-radius: 50px;
+    height: auto;
+    padding-top: 6px;
+}
+
+.mb-petinfo {
+    width: 60%;
+    padding: 0 30px;
+}
+
+.intro {
+    margin-top: 5px;
+}
+
+.mb-petname>input {
+    font-size: 30px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.mb-petinfo textarea {
+    width: 100%;
+    height: 150px;
+    padding: 20px;
+    resize: none;
+    font-size: 15px;
+    background-color: #f882570e;
+    border-radius: 30px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.mb-petinfo li {
+    margin: 10px 0;
+    padding: 5px;
+    font-size: 10px;
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    background-color: #f8825791;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* 글 작성란 */
+.mb-content textarea {
+    width: 100%;
+    height: 500px;
+    padding: 20px;
+    resize: none;
+    font-size: 20px;
+    background-color: #f882570e;
+    border-radius: 30px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.mb-petinfo table tr td input {
+    width: 100%;
+    height: 30px;
+    font-size: 20px;
+    border: none;
+}
+
+.mb-submit {
+    height: 50px;
+}
+
+.mb-submit input {
+    float: right;
+    width: 15%;
+    height: 100%;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: #F88257;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s ease;
+}
+
+.mb-submit input:hover {
+    background-color: #f88257ea;
+    transform: translateY(-3px);
+}
+
+
+
+
+
+
+/* qna 보드 */
+
+.qna{
+    padding: 0 0 10px 0;
+    font-size: 30px;
+    font-weight: bold;
+    
+}
+.qna-line{
+    margin-bottom: 30px;
+}
+
+
+
+
+
+
+
+
+/* qna 글 상세 */
+
+.qna-name{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.qna-name > li:nth-child(1){
+    font-size: 25px;
+    font-weight: bold;
+    width: 50%;
+}
+
+.qna-fo{
+     margin-left: 15px;
+     font-size: 17px;
+}
+.qna-li{
+    font-size: 13px;
+}
+.qna-content{
+    padding: 20px;
+    min-height: 500px;
+}
+
+/* 답글 */
+.qna-box{
+    overflow: hidden;
+}
+.qna-left{
+    float: left;
+    width: 10%;
+    padding: 20px;
+}
+.qna-pfimg{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: gray;
+}
+.qna-right{
+    float: right;
+    width: 90%;
+}
+
+.qna-right p{
+    min-height: 200px;
+    padding: 20px;
+}
+.qna-top{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.qna-btn{
+    float: right;
+    margin-bottom: 20px;
+}
+.qna-btn button{
+    width: 50px;
+    height: 25px;
+    font-size: 13px;
+    font-weight: bold;
+    background-color: #F88257;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s ease;
+}
+
+
+/* 답글작성영역 */
+#qna-reply{
+    width: 100%;
+    min-height: 150px;
+    padding: 20px;
+    resize: none;
+    font-size: 20px;
+    background-color: #f882570e;
+    border-radius: 30px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+html{
+    background-color: #f882570e;
+}
+
+section{
+    background-color: white;
+}

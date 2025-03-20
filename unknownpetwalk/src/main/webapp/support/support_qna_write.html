@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/support_qna_write.css">
+</head>
+
+<body> <!-- 형섭 -->
+
+    <header>
+        <ul class="menu">
+            <li style="float: left;"><a href=""><img src="img/mainlogo.png" alt="logo" width="100px"></a>
+            </li>
+            <li><a href="">로그아웃</a></li>
+            <li><a href="">마이페이지</a></li>
+            <li><a href="">고객지원</a></li>
+        </ul>
+    </header>
+
+
+    <section>
+        <p class="qna">문의하기</p>
+        <hr style="margin-bottom: 30px;">
+        
+        <form action="" class="mb-form">
+            <ul class="mb-name">
+                <li><input type="text" placeholder="제목"> </li>
+                <div>
+                    <select name="qna-cate" id="qna-cate">
+                        <option value="1">반려동물</option>
+                        <option value="2">서비스</option>
+                        <option value="3">기타</option>
+                    </select>
+                </div>
+                <li>문의유형</li>
+
+            </ul>
+            <div class="mb-content">
+                <textarea placeholder="글내용" class="mb-intro"></textarea>
+            </div>
+            <div class="mb-submit">
+                <input type="submit" value="등록">
+            </div>
+        </form>
+    </section>
+
+    <script>
+        var submit = document.querySelector('.mb-submit');
+
+        submit.onclick = function(){
+            if(event.target.tagName != "INPUT")return;
+            if(confirm('등록하시겠습니까?')){
+                alert('등록되었습니다.');
+            }else{
+                event.preventDefault();
+            }
+            
+        }
+        
+    </script>
+
+
+    <footer>
+        <div class="underminimenu">
+            <ul style="">
+                <li><a href="">소개</a></li>|
+                <li><a href="">메인서비스</a></li>|
+                <li><a href="">고객지원</a></li>|
+                <li><a href="">이용약관</a></li>|
+                <li><a href="">개인정보처리방침</a></li>
+            </ul>
+            <p>(주)펫모시깽이 | 대표 박인욱 | 서울 강남구 테헤란로7길 7 (역삼동) 5층 | 대표 전화번호 : 010-1234-1234<br>
+                사업자 등록 번호 : 123-45-67890 | 어쩌고저쩌고 | 있어보이는 텍스트 (p 태그 )</p>
+        </div>
+        <div class="infoarea">
+            <p>Copyright 2025 Pet © All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

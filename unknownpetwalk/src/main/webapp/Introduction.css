@@ -1,0 +1,194 @@
+*{margin: 0; padding: 0;box-sizing: border-box;}
+        body{ width: 1920px;margin: 0 auto;}
+        ul{list-style: none;}
+        li{display: inline-block;}
+        a{color: black; text-decoration: none;}
+
+        
+
+    
+    .html, body{
+        font-family: "Poor Story", system-ui;
+        font-weight: 400;
+        font-style: normal;
+        
+        
+      }
+      
+  
+      img {
+            max-width: 100%;
+            height: auto    
+        }
+
+
+        /* 메인 영역 */
+        section{
+            height: 1900px;
+            width: 100%; 
+            
+
+            
+        }
+        
+        
+        .Int1 {
+            height: 500px;
+        }
+
+        .Int1-img >img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover; /* 비율 유지하면서 꽉 차게 */
+            object-position: center; /* 중앙 정렬 */
+            
+            
+        }
+
+        
+        .Int2 {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }
+        
+        .Int2-img > img {
+            float: left;
+            width: 400px;
+            height: 150px;
+            margin-left: 100px;
+            
+            object-fit: cover;
+            
+        
+
+                
+        }
+        .back-color {
+        width: 100%;
+        height: 400px;
+        background: rgba(248, 130, 87, 1);
+        opacity: 1;
+        top: 473px;
+        left: 41px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        } 
+
+        .Int3 {
+            overflow: hidden;
+        }
+        .dog-icon {
+            
+                display: flex; /* Flexbox 활성화 */
+                justify-content: center; /* 가로축 가운데 정렬 */
+                align-items: center; /* 세로축 가운데 정렬 */
+                height: 100%; /* 부모 요소의 높이 설정 */
+        }
+
+        .walk-icon {
+            float: left;
+            margin-left: 33.3333%;
+            width: 33.3333%
+                   
+        }
+        .play-icon {
+            float: left;
+            width: 33.3333%;
+            margin-left: 7%;
+            margin-right: 7%;
+            
+            
+            
+        }
+        .bowl-icon {
+            float: left;
+            width: 33.3333%;
+            margin-right: 33.3333%;
+            
+        }
+
+        .Int4 {
+         margin-top: 60px;
+        height: 600px;
+
+
+        }
+        .Int4-let {
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .review-box {
+            
+            overflow: hidden;
+            width: 1600px;
+            margin: 0 auto;
+            
+
+
+        }
+        .review {
+            border: 2px solid #c0b7b7;
+            float: left;
+            box-sizing: border-box;
+            margin: 0 auto;
+            border-radius: 10%;
+            width: 30%;
+            margin: 10px;
+            margin-right: 40px;
+            opacity: 1;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            
+        }
+        .review:hover {
+            border-color: #F88257;
+            background-color: #e9e9e9;
+            opacity: 0.7;
+        }
+
+        .review > h3 {
+            margin-top: 10px;
+            text-align: center; 
+            font-size: 20px;
+        }
+        .review > img {  
+            border-radius: 10%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .rev-img {
+            margin: 0 auto;
+            margin-top: 15px;
+        }
+
+        .rev-img > img{
+            display: block;
+            margin: 0 auto;
+            width: 50px;
+            height: 50px;
+
+        }
+        
+       
+        
+        
+
+        /* 푸터 영역 */
+        footer{
+            height: 120px;
+            border-top: 1px solid #F88257;
+            font-weight: 100;
+            font-size: 10px;
+            text-align: center;
+            padding-top: 25px;
+        }
+        .underminimenu{
+            margin-bottom: 10px;
+        }
+        .underminimenu ul{
+            font-size: small; 
+            margin-bottom: 5px;
+        }
+
+        

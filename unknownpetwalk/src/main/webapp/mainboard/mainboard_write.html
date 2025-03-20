@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/support_qna_write.css"> <!-- css파일 같은거 쓰신듯 해서 일단은 같은 링크로 참조했어요 -->
+</head>
+
+<body> <!-- 형섭 -->
+
+    <header>
+        <ul class="menu">
+            <li style="float: left;"><a href=""><img src="img/mainlogo.png" alt="logo" width="100px"></a>
+            </li>
+            <li><a href="">로그아웃</a></li>
+            <li><a href="">마이페이지</a></li>
+            <li><a href="">고객지원</a></li>
+        </ul>
+    </header>
+
+
+    <section>
+        <form action="" class="mb-form">
+            <ul class="mb-name">
+                <li><input type="text" placeholder="제목"> </li>
+                <li><button type="button" id="btn">구인하기</button></li>
+
+            </ul>
+            <ul class="mb-address">
+                <li>주소<input type="text"></li>
+                <li>의뢰금액<input type="text" placeholder="금액을 작성 해주세요."></li>
+            </ul>
+
+            <div class="mb-pet">
+                <div class="mb-left">
+                    <div class="mb-petpic">
+                        <img src="/img/intro-petwalkswitch-02.png" alt="사진" width="100%" height="100%">
+                    </div>
+                </div>
+                <div class="mb-petinfo">
+                    <div class="mb-petname">
+                        <input type="select" name="pet-name" value="바둑이">
+                    </div>
+                    <div class="intro">
+                        <h2>소개</h2>
+                        <textarea placeholder="소개글"></textarea>
+
+                    <ul>
+                        <li class="pet-category">#닥스훈트</li>
+                        <li class="pet-gender">#남아</li>
+                        <li class = "pet-age" >#19살</li>
+                        <li class ="pet-weight">#10kg</li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+
+            <div class="mb-content">
+                <textarea placeholder="내용" class="mb-intro"></textarea>
+            </div>
+            <div class="mb-submit">
+                <input type="submit" value="등록">
+            </div>
+        </form>
+    </section>
+
+    <script>
+                    
+        var btn = document.getElementById('btn');
+        var pet = document.querySelector('.mb-pet')
+        var submit = document.querySelector('.mb-submit');
+        btn.onclick = function(){
+            pet.classList.toggle('active');
+            
+            if(pet.classList.contains('active')){
+                btn.innerHTML = '구직하기';
+                pet.style.display = 'flex';
+            }else{
+
+                btn.innerHTML = '구인하기';
+                pet.style.display = 'none';
+            }
+        }
+        submit.onclick = function(){
+            if(event.target.tagName != "INPUT")return;
+            if(confirm('등록하시겠습니까?')){
+                alert('등록되었습니다.');
+            }else{
+                event.preventDefault();
+            }
+            
+        }
+        
+    </script>
+
+    <footer>
+        <div class="underminimenu">
+            <ul style="">
+                <li><a href="">소개</a></li>|
+                <li><a href="">메인서비스</a></li>|
+                <li><a href="">고객지원</a></li>|
+                <li><a href="">이용약관</a></li>|
+                <li><a href="">개인정보처리방침</a></li>
+            </ul>
+            <p>(주)펫모시깽이 | 대표 박인욱 | 서울 강남구 테헤란로7길 7 (역삼동) 5층 | 대표 전화번호 : 010-1234-1234<br>
+                사업자 등록 번호 : 123-45-67890 | 어쩌고저쩌고 | 있어보이는 텍스트 (p 태그 )</p>
+        </div>
+        <div class="infoarea">
+            <p>Copyright 2025 Pet © All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
