@@ -48,13 +48,7 @@
 	
 	
 
-	<select id="worklist" parameterType="string" resultType="com.pet.board.model.BoardDTO">
-		SELECT * FROM BOARD WHERE JOB_TAKER=#{memNum}
-	</select>
-	
-	<select id="writelist" parameterType="string" resultType="com.pet.board.model.BoardDTO">
-		SELECT * FROM BOARD WHERE MEM_NUM=#{memNum}
-	</select>
+
 	
 
 

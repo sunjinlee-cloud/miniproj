@@ -76,18 +76,20 @@ footer {
 }
 
 input:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
     outline: none;
 }
 
 input,
-textarea {
+textarea,
+select {
     border: none;
 }
 
 .mb-name {
     overflow: hidden;
-    height: 80px;
+    height: 100%;
 }
 
 .mb-name>li:nth-child(1) {
@@ -98,14 +100,14 @@ textarea {
 
 .mb-name>li:nth-child(1)>input {
     width: 100%;
-    height: 60px;
-    font-size: 30px;
+    height: 100%;
+    font-size: 25px;
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 10px;
     background-color: #f882570e;
 }
 
-.mb-name>li:nth-child(2)>#btn {
+#mb-btn {
     float: right;
     width: 100%;
     height: 100%;
@@ -129,14 +131,13 @@ input::placeholder {
 }
 
 .active {
-    display: block;
     animation: fade-in 0.5s ease-in-out;
 }
 
 @keyframes fade-in {
     from {
         opacity: 0;
-        margin-top: 320px;
+        margin-top: -320px;
     }
 
     to {
@@ -150,11 +151,38 @@ input::placeholder {
     margin: 10px 0;
     font-size: 15px;
 }
+.mb-map {
+    padding: 5px 10px;
+    height: 100%;
+    font-size: 13px;
+    font-weight: bold;
+    background-color: #F88257;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-right: 100px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s ease;
+}
+#map{
+    border: 0.3px solid #f8825791;
+    border-radius: 20px;
+    margin: 0 auto;
+    
+}
+.mb-map:hover {
+    background-color: #f88257ea;
+    transform: translateY(-3px);
+}
 
 .mb-address li input {
     width: 100%;
     height: 30px;
-    font-size: 20px;
+    font-size: 15px;
+    border: 1px solid #cccccc3b;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 /* 동물정보 */
@@ -166,7 +194,6 @@ input::placeholder {
 }
 
 .mb-pet.active {
-    height: 300px;
     transition: height 0.5s;
 }
 
@@ -179,15 +206,15 @@ input::placeholder {
     width: 100%;
     height: 100%;
     text-align: center;
-    border-right: 1px solid rgba(0, 0, 0, 0.2);
-    margin-top: 27px;
+    /* border-right: 1px solid rgba(0, 0, 0, 0.2); */
+    margin-top: 30px;
 }
 
 .mb-petpic img {
-    width: 270px;
+    width: 300px;
     border-radius: 50px;
     height: auto;
-    padding-top: 6px;
+    border: 0.5px solid rgba(0, 0, 0, 0.4);
 }
 
 .mb-petinfo {
@@ -199,21 +226,49 @@ input::placeholder {
     margin-top: 5px;
 }
 
-.mb-petname>input {
-    font-size: 30px;
+.mb-petname {
     padding: 10px 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 0.2px solid rgba(0, 0, 0, 0.2);
 }
 
-.mb-petinfo textarea {
+#pet-nameselect {
+    /* width: 50%;
+    height: 40px;
+    font-size: 25px; */
+    width: 70%;
+    height: 40px;
+    padding: 5px;
+    font-size: 25px;
+    border: 1px solid #cccccc3b;
+    border-radius: 5px;
+}
+
+#pet-nameselect>option {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #f882570e;
+
+    color: #333;
+}
+
+/* #pet-nameselect > option:hover{
+    background-color: none  ;
+} */
+
+.mb-intro {
+    font-size: 20px;
+    padding: 10px 0 20px 0;
+    margin-top: 20px;
+}
+
+.mb-petinfo p {
     width: 100%;
     height: 150px;
     padding: 20px;
-    resize: none;
     font-size: 15px;
     background-color: #f882570e;
     border-radius: 30px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    border: 0.5px solid rgb(233, 233, 233);
 }
 
 .mb-petinfo li {
@@ -223,8 +278,9 @@ input::placeholder {
     border-radius: 10px;
     color: rgb(255, 255, 255);
     background-color: #f8825791;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    border: 0.5px solid rgb(233, 233, 233);
 }
+
 
 /* 글 작성란 */
 .mb-content textarea {
@@ -235,7 +291,8 @@ input::placeholder {
     font-size: 20px;
     background-color: #f882570e;
     border-radius: 30px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    border: 0.5px solid rgba(201, 201, 201, 0.377);
+    /* box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1); */
 }
 
 .mb-petinfo table tr td input {
@@ -275,15 +332,18 @@ input::placeholder {
 
 
 
+
+
 /* qna 보드 */
 
-.qna{
+.qna {
     padding: 0 0 10px 0;
     font-size: 30px;
     font-weight: bold;
-    
+
 }
-.qna-line{
+
+.qna-line {
     margin-bottom: 30px;
 }
 
@@ -294,68 +354,84 @@ input::placeholder {
 
 
 
+
+
 /* qna 글 상세 */
 
-.qna-name{
+.qna-name {
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin-bottom: 25px;
 }
 
-.qna-name > li:nth-child(1){
+.qna-name>li:nth-child(1) {
     font-size: 25px;
     font-weight: bold;
     width: 50%;
 }
 
-.qna-fo{
-     margin-left: 15px;
-     font-size: 17px;
+.qna-fo {
+    margin-left: 15px;
+    font-size: 17px;
 }
-.qna-li{
+
+.qna-li {
     font-size: 13px;
 }
-.qna-content{
+
+.qna-content {
     padding: 20px;
     min-height: 500px;
 }
 
 /* 답글 */
-.qna-box{
+.qna-box {
     overflow: hidden;
 }
-.qna-left{
+
+.qna-left {
     float: left;
     width: 10%;
     padding: 20px;
 }
-.qna-pfimg{
+
+.qna-pfimg {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: gray;
+    background-image: url(../img/KakaoTalk_20250308_141848131.jpg);
+    background-size: cover;
+    background-position: center;
+    border: 0.3px solid rgba(0, 0, 0, 0.2);
 }
-.qna-right{
+
+.qna-right {
     float: right;
     width: 90%;
 }
 
-.qna-right p{
+.qna-right p {
     min-height: 200px;
     padding: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
-.qna-top{
+
+.qna-top {
     display: flex;
     justify-content: space-between;
     padding: 10px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.2); */
 }
-.qna-btn{
+
+.qna-btn {
     float: right;
-    margin-bottom: 20px;
+    margin: 20px;
+
 }
-.qna-btn button{
+
+.qna-btn button {
     width: 50px;
     height: 25px;
     font-size: 13px;
@@ -365,13 +441,13 @@ input::placeholder {
     border: none;
     cursor: pointer;
     border-radius: 10px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
-    transition: transform 0.2s ease;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+
 }
 
 
 /* 답글작성영역 */
-#qna-reply{
+#qna-reply {
     width: 100%;
     min-height: 150px;
     padding: 20px;
@@ -382,10 +458,57 @@ input::placeholder {
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 }
 
-html{
+html {
     background-color: #f882570e;
 }
 
-section{
+section {
     background-color: white;
 }
+
+
+
+.near_list {
+    border-top: 1px solid #ccc;
+    background-color: white;
+}
+
+.near_list li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    display: block;
+}
+
+.near_list li:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.near_list li h4 {
+    float: left;
+    width: 100px;
+    padding: 0 0 0 50px;
+    background: url(../img/ico_nearNext.png) no-repeat 12px 50%;
+    font-size: 15px;
+}
+
+.near_list li h4.next {
+    background: url('../img/ico_nearPrev.png') no-repeat 12px 50%;
+}
+
+.near_list li a {
+    float: left;
+}
+
+
+
+
+
+
+/* 공지사항 글상세 */
+/* .qna-name > li:nth-child(1){
+    font-size: 25px;
+    font-weight: bold;
+    width: 70%;
+} */
