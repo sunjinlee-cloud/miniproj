@@ -20,7 +20,7 @@
 	      <transactionManager type="JDBC"/>
 	      <dataSource type="POOLED">
 	        <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
-	        <property name="url" value="jdbc:oracle:thin:@172.30.1.25:1521:xe?allowMultiQueris=true"/>
+	        <property name="url" value="jdbc:oracle:thin:@172.30.1.25:1521:xe?allowMultiQueries=true"/>
 	        <property name="username" value="PET"/>
 	        <property name="password" value="PET"/>
 	      </dataSource>
@@ -31,6 +31,7 @@
 	  <mappers>
 	    <mapper resource="mybatis/mapper/NoticeMapper.xml"/>
 	    <mapper resource="mybatis/mapper/UserMapper.xml"/>
+	    <mapper resource="mybatis/mapper/QnaMapper.xml"/>   
 	  </mappers>
 		<!-- 메퍼의 갯수만큼 전부 여기에 추가해줘야한다. -->
 

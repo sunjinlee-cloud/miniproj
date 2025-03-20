@@ -1,7 +1,6 @@
 package com.pet.util.mybatis;
 
 import java.io.InputStream;
-import java.util.ResourceBundle;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -36,16 +35,5 @@ public class MybatisUtil {
 	public static SqlSessionFactory getSqlSessionFactory() {
 		return sqlSessionFactory;
 	}
-
-
-
-
-
-
-
-
-
-
-
 
 }
