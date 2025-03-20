@@ -12,15 +12,13 @@
 	<!-- 문의글 등록 -->
 	<insert id="insertQna"
 		parameterType="com.pet.qna.model.QnaDTO">
-		INSERT INTO QNA (QNA_NUM, QNA_TITLE, QNA_CONTENT, QNA_DATE, MEM_NUM,
-		QNA_TYPE)
-		VALUES (QNA_SEQ.NEXTVAL, #{qnaTitle}, #{qnaContent}, SYSDATE, #{memNum},
-		#{qnaType})
+		INSERT INTO QNA (QNA_NUM, QNA_TITLE, QNA_CONTENT, QNA_DATE, MEM_NUM)
+		VALUES (QNA_SEQ.NEXTVAL, #{qnaTitle}, #{qnaContent}, SYSDATE, #{memNum})
 	</insert>
 
 	<!-- 문의글 상세보기 -->
 	<select id="getQnaDetail" parameterType="int" resultType="com.pet.qna.model.QnaDTO">
-		SELECT * FROM QNA WHERE QNA_NUM = #{qnaNum}
+		SELECT QNA_TITLE, QNA_CONTENT, QNA_DATE FROM QNA WHERE QNA_NUM = #{qnaNum}
 	</select>
 
 	<!-- 문의글 수정 -->
@@ -28,8 +26,7 @@
 		parameterType="com.pet.qna.model.QnaDTO">
 		UPDATE QNA SET
 		QNA_TITLE = #{qnaTitle},
-		QNA_CONTENT = #{qnaContent},
-		QNA_TYPE = #{qnaType}
+		QNA_CONTENT = #{qnaContent}
 		WHERE QNA_NUM = #{qnaNum}
 	</update>
 
@@ -40,7 +37,7 @@
 
 	<!-- 문의글 리스트 전체 보기 -->
 	<select id="getQnaList" resultType="com.pet.qna.model.QnaDTO">
-		SELECT * FROM QNA ORDER BY QNA_NUM DESC
-	</select>	
+    SELECT QNA_NUM, QNA_TITLE, QNA_DATE FROM QNA ORDER BY QNA_NUM DESC
+</select>	
 
 </mapper>

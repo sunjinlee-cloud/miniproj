@@ -19,7 +19,7 @@ public class QnaServiceImpl implements QnaService {
 	//sqlSessionFactory
 	private  SqlSessionFactory sqlSessionFactory = MybatisUtil.getSqlSessionFactory();
 
-	@Override
+	@Override //문의글 등록
 	public void insertQna(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		SqlSession sql = null;
@@ -27,13 +27,14 @@ public class QnaServiceImpl implements QnaService {
 		try {
 			String qnaTitle = request.getParameter("qnaTitle");
 			String qnaContent = request.getParameter("qnaContent");
-			String memNum = request.getParameter("memNum");
-			String qnaType = request.getParameter("qnaType");
-
+			
+			//추후 사용할 로그인 세션 식별 정보로만 활용할 예정
+			String memNum = (String) request.getSession().getAttribute("memNum");
+			if (memNum == null) memNum = "test@email.com"; // 테스트용
+				
 			System.out.println(qnaTitle);
 			System.out.println(qnaContent);
 			System.out.println(memNum);
-			System.out.println(qnaType);
 
 			sql = sqlSessionFactory.openSession(true);
 			QnaMapper qna = sql.getMapper(QnaMapper.class);
@@ -42,7 +43,6 @@ public class QnaServiceImpl implements QnaService {
 			dto.setQnaTitle(qnaTitle);
 			dto.setQnaContent(qnaContent);
 			dto.setMemNum(memNum);
-			dto.setQnaType(qnaType);
 
 			int result = qna.insertQna(dto);
 
@@ -64,7 +64,7 @@ public class QnaServiceImpl implements QnaService {
 
 
 
-	@Override
+	@Override //문의글 상세보기
 	public void getQnaDetail(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -87,7 +87,7 @@ public class QnaServiceImpl implements QnaService {
 		}
 	}
 
-	@Override
+	@Override //문의글 수정
 	public void updateQna(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -97,7 +97,6 @@ public class QnaServiceImpl implements QnaService {
 			int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
 			String qnaTitle = request.getParameter("qnaTitle");
 			String qnaContent = request.getParameter("qnaContent");
-			String qnaType = request.getParameter("qnaType");
 
 			sql = sqlSessionFactory.openSession(true);
 			QnaMapper qnaMapper = sql.getMapper(QnaMapper.class);
@@ -106,7 +105,6 @@ public class QnaServiceImpl implements QnaService {
 			dto.setQnaNum(qnaNum);
 			dto.setQnaTitle(qnaTitle);
 			dto.setQnaContent(qnaContent);
-			dto.setQnaType(qnaType);
 
 			int result = qnaMapper.updateQna(dto);
 
@@ -116,7 +114,7 @@ public class QnaServiceImpl implements QnaService {
 				System.out.println("QNA 수정 실패!");
 			}
 
-			response.sendRedirect("detail.qna?qnaNum=" + qnaNum);
+			response.sendRedirect("qna_list.qna");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -126,7 +124,7 @@ public class QnaServiceImpl implements QnaService {
 		}
 	}
 
-	@Override
+	@Override //문의글 삭제
 	public void deleteQna(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -156,7 +154,7 @@ public class QnaServiceImpl implements QnaService {
 		}
 	}
 
-	@Override
+	@Override //문의글 리스트 전체 보기
 	public void getQnaList(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
