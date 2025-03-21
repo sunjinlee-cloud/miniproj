@@ -20,6 +20,10 @@
 		SELECT COUNT(*) FROM MEMBER WHERE MEM_NUM=#{memNum}
 	</select>
 	
+	<select id="phoneDuplicationCheck" parameterType="String">
+		SELECT COUNT(*) FROM MEMBER WHERE MEM_PHONE=#{phone}
+	</select>
+	
 	
 	<!-- 로그인시 select * 해서 dto에 담아 반환하는 쿼리문 작성해야함 -->
 	<select id="login" parameterType="com.pet.users.model.UsersDTO" resultType="com.pet.users.model.UsersDTO">
@@ -28,38 +32,43 @@
 	
 	
 	
+	
+	
+	
 	<select id="profile1" parameterType="string" resultType="com.pet.users.model.UsersDTO">
-		SELECT MEM_PHOTO, MEM_INTRO FROM MEMBER WHERE MEM_NUM=#{memNum} <!-- 프사 -->
+		SELECT MEM_PHOTO, MEM_NICK, MEM_INTRO FROM MEMBER WHERE MEM_NUM=#{memNum} <!-- 프사 -->
 	</select> 
 	
 	<select id="profile2" parameterType="string" resultType="com.pet.users.model.ProfileDTO">
-		SELECT COUNT(*), AVG(REVIEW_SCORE), AVG(PAY) FROM MEMBER M LEFT OUTER JOIN BOARD B ON M.#{memNum} = B.JOB_TAKER
+		SELECT COALESCE(COUNT(*), 0) AS count, ROUND(COALESCE(AVG(REVIEW_SCORE),0), 2) AS avgReviewScore, ROUND(COALESCE(AVG(PAY), 0),-2) AS avgPay FROM BOARD WHERE JOB_TAKER=#{memNum}
 		<!-- 맡은 건 수, 평균평점, 평균의뢰금액 -->
 	</select>
 	
-	<select id="worklist" parameterType="string" resultType="com.pet.board.model.BoardDTO">
-		SELECT * FROM BOARD WHERE JOB_TAKER=#{memNum}
+	<select id="worklist" parameterType="string" resultType="string">
+		SELECT BOARD_TITLE FROM (SELECT * FROM BOARD WHERE JOB_TAKER=#{memNum} ORDER BY REGDATE DESC) WHERE ROWNUM <![CDATA[<]]> 4 
 	</select>
 	
-	<select id="writelist" parameterType="string" resultType="com.pet.board.model.BoardDTO">
-		SELECT * FROM BOARD WHERE MEM_NUM=#{memNum}
+	<select id="writelist" parameterType="string" resultType="string">
+		SELECT * FROM (SELECT * FROM BOARD WHERE MEM_NUM=#{memNum} ORDER BY REGDATE DESC) WHERE ROWNUM <![CDATA[<]]> 4
 	</select>
 	
-	
-	
 
-
-	
-
-
-	<select id="delete" parameterType="string" resultType="string">
+	<delete id="delete" parameterType="string">
 		DELETE FROM MEMBER WHERE MEM_NUM=#{memNum}
-	</select>
+	</delete>
 
 
+	<update id="modify" parameterType="com.pet.users.model.UsersDTO">
+		UPDATE MEMBER SET MEM_PW=#{memPw}, MEM_NICK=#{memNick}, MEM_ADDRESS=#{memAddress}, MEM_PHONE=#{memPhone}, MEM_INTRO=#{memIntro} WHERE MEM_NUM=#{memNum}
+	</update>
 
+	<insert id="addpet" parameterType="com.pet.pet.model.PetDTO">
+		INSERT INTO PET (PET_NUM, PET_NAME, PET_PHOTO, PET_BREED, PET_GENDER, PET_WEIGHT, PET_AGE, PET_ISMAIN, PET_INTRO, PET_NUM) VALUES(pet_seq.nextval,#{petName}, #{petPhoto}, #{petBreed}, #{gender}, #{petWeight}, #{petAge}, #{petIsmain}, #{petIntro}, #{memNum})
+	</insert>
 
-
+	<update id="userTypeChange" parameterType="string">
+		UPDATE MEMBER SET MEM_TYPE='U' WHERE MEM_NUM=#{memNum};
+	</update>
 
 
 

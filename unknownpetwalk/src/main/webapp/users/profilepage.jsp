@@ -124,48 +124,50 @@
             <div class="profile"> <!-- 프로필카드영역-->
                 <div class="profilePhoto"><img src="../img/person.png" alt="프로필사진"></div>
                 <div class="nicknameCard">
-                    <div class="nickname">${UsersDTO.memNick}</div>
+                    <div class="nickname">${requestScope.usersProfileDTO.memNick}</div>
                     님
                 </div>
 
                 <div class="profileUnder" style="border-top: 3px solid #F88257;">
                     <div class="num">
                         <img src="../icon/walking.png" alt="일한건수" class="img bi" style="width: 30px; height: 30px;"><div class="top">맡은 건 수</div>
-                        10 건</div>
+                        ${requestScope.profileDTO.count} 건</div>
                     <div class="avgScore">
                         <i class="bi bi-star"></i><div class="top">평균 평점</div>
-                        8.9 점</div>
+                        ${requestScope.profileDTO.avgReviewScore} 점</div>
                     <div class="avgPay">
                         <i class="bi bi-coin"></i><div class="top">평균 의뢰금액</div>
-                        17,000 원</div>
+                        ${requestScope.profileDTO.avgPay} 원</div>
                 </div>
-                <div class="introducti on">
-                    자기소개...<br>
-                    자기소개...<br>
-                    자기소개...<br>
-                    자기소개...<br>
-                    자기소개...<br>
+                <div class="introduction">
+                    ${requestScope.UsersProfileDTO.memIntro}
                 </div>
             </div>
             <div class="jobsTaken"> <!-- 맡은 건 내역 -->
                 <div class="jobsTakenTitle">
                     <div class="title">맡은 건 내역</div>
-                    <div class="takenListMore"><i class="bi bi-three-dots"></i></div>
+                    <div class="takenListMore"><a href="mainboard_list.jsp?jobtaker=${requestScope.memNick}"><i class="bi bi-three-dots"></i></a></div>
                 </div>
                 <div class="jobsTakenBoard">
-                    <div class="jobsTakenList"><i class="bi bi-chevron-right"></i>말티즈 할머니 바깥공기 쐬어 주실 분</div>
-                    <div class="jobsTakenList"><i class="bi bi-chevron-right"></i>비숑 쌍둥이 산책 시켜 주세요</div>
-                    <div class="jobsTakenList"><i class="bi bi-chevron-right"></i>리트리버 밤 산책 가능하신 분?</div>
-                </div>
+                	<c:forEach var="boardTitle" items="${requestScope.workList}">
+						<div class="jobsTakenList">
+							<a href="getContent.board?boardTitle=${boardTitle}"><i class="bi bi-chevron-right"></i>${boardTitle}</a>
+						</div>
+					</c:forEach>                    
+                 </div>
                 
             </div>
             <div class="jobsGiven"> <!-- 글 쓴 내역-->
                 <div class="jobsGivenTitle">
                     <div class="title">작성 글 내역</div>
-                    <div class="givenListMore"><i class="bi bi-three-dots"></i></div>
+                    <div class="givenListMore"><a href="mainboard_list.jsp?memnum=${requestScope.UsersProfileDTO.memNick}"><i class="bi bi-three-dots"></a></i></div>
                 </div>
                 <div class="jobsGivenBoard">
-                    <div class="jobsGivenList"><i class="bi bi-chevron-right"></i>화이트포메 산책 시켜주세요</div>
+                	<c:forEach var="boardTitle" items="${writeList}">
+						<div class="jobsGivenList">
+							<a href="getContent.board?boardTitle=${boardTitle}"><i class="bi bi-chevron-right"></i>${boardTitle}</a>
+						</div>
+					</c:forEach>
                 </div>
             </div>
         </div>
@@ -199,6 +201,10 @@
             if (!event.target.classList.contains("bi")) return;
             event.target.nextElementSibling.style.opacity = 0;
         };
+        
+        var asd = workList;
+        console.log(asd);
+        
 
     </script>
     

@@ -47,16 +47,22 @@ public class UserController extends HttpServlet {
 		
 		if(command.equals("/controller/join.example")) {
 			System.out.println("회원 정보 수정");
+		} else if (command.equals("/users/idCheck.users")) {
+			service.idcheck(request, response);
+		} else if (command.equals("/users/phoneCheck.users")) {
+			service.phonecheck(request, response);
 		} else if (command.equals("/users/joinForm.users")) {//회원가입 페이지에서 넘어온 요청
 			service.join(request, response);
-		} else if (command.equals("/users/loginForm.users")) {
+		} else if (command.equals("/users/loginForm.users")) {//로그인 페이지에서 넘어온 요청
 			service.login(request, response);
-		} else if (command.equals("/users/profilePage.users")) {
+		} else if (command.equals("/users/profilePage.users")) {//글 상세페이지 아래 지원칸의 프로필을 누르면 넘어오는 페이지
 			service.profile(request, response);
 			request.getRequestDispatcher("/users/profilepage.jsp").forward(request, response);
-		} else if (command.equals("/users/modify.users")) {
-			
-		} else if (command.equals("/users/delete.users")) {
+		} else if (command.equals("/users/modify.users")) {//회원정보 수정 페이지
+			service.modify(request, response);
+		} else if (command.equals("/users/addPet.users")) {
+			service.addpet(request, response);
+		} else if (command.equals("/users/delete.users")) {//회원 탈퇴 페이지
 			service.delete(request, response);
 		}
 		

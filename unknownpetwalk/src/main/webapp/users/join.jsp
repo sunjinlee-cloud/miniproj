@@ -60,7 +60,8 @@
         .list li {display: block; padding: 10px;}
         input {width: 150px;}
         .id {width: 100px;} .mail{width: 50px;}
-        .isMultiple {width: 60px; height: 21px;}
+        .idCheck {width: 60px; height: 21px;}
+        .phoneCheck {width: 60px; height: 21px;}
         .mailSelect {width: 50px;}
         .mailDomain {width: 70px;}
         .notSame {display: inline-block; color: red; opacity: 0; margin-left: 150px;}
@@ -83,7 +84,7 @@
     <section class="box">
         <div class="title"><h2>모르는 강아지와 산책하기</h2></div>
         <div class="card">
-            <form action="joinForm.users" method="post">
+            <form action="joinForm.users" method="post" onsubmit="return requiredCheck()">
                 <ul class="list">
                     <li class="littlebox">
                         <p class="desc">ID(EMAIL)</p><input type="text" class="id" placeholder="이메일을 입력하세요" name="id">@
@@ -95,7 +96,7 @@
                             <option value="hanmail.net">hanmail.net</option>
                             <option value="nate.com">nate.com</option>
                         </select>
-                        <button type="button" class="isMultiple id">중복 확인</button>
+                        <button type="button" class="idCheck">중복 확인</button>
                     </li>
                     <li>
                         <p class="desc">비밀번호</p><input type="password" class="pw" placeholder="비밀번호를 입력하세요" name="memPw">
@@ -105,25 +106,25 @@
                         <div class="notSame">비밀번호가 일치하지 않습니다.</div>
                     </li>
                     <li class="littlebox">
-                        <p class="desc">닉네임</p><input type="text" class="nickname" placeholder="ID를 입력하세요" name="memNick"> 
-                        <button type="button" class="isMultiple nickname">중복 확인</button>
+                        <p class="desc">닉네임</p><input type="text" class="nickname" placeholder="닉네임을 입력하세요" name="memNick"> 
                     </li>
                     <li>
                         <p class="desc">주소</p><input type="text" id="sample6_postcode" placeholder="우편번호">
                         <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="width: 70px;"><br>
                         <input type="text" id="sample6_address" placeholder="주소" style="margin-left: 120px;"
                         	name="sample6_address"><br>
-                        <input type="text" id="sample6_detailAddress" placeholder="상세주소" style="margin-left: 120px;"
-                        	name="sample6_detailAddress">
+                        <!--<input type="text" id="sample6_detailAddress" placeholder="상세주소" style="margin-left: 120px;"
+                        	name="sample6_detailAddress">-->
                         <!--<input type="text" id="sample6_extraAddress" placeholder="참고항목" style="margin-left: 120px;
                             display: block;">-->
                     </li>
                     <li>
                         <p class="desc">연락처</p><input type="text" class="phone" placeholder="전화번호를 입력하세요" name="memPhone">
+                        <button type="button" class="phoneCheck">중복 확인</button>
                     </li>
                     <li>
                         <p class="desc">성별</p> 
-                        <input type="radio" id="male" name="gender" value="M" class="rad"><label for="male" class="gen">남</label>
+                        <input type="radio" id="male" name="gender" value="M" class="rad" checked><label for="male" class="gen">남</label>
                         <input type="radio" id="female" name="gender" value="F" class="rad"><label for="female" class="gen">여</label>
                     </li>
                     <li class="texta">
@@ -182,17 +183,18 @@
                 document.getElementById('sample6_postcode').value = data.zonecode;
                 document.getElementById("sample6_address").value = addr;
                 // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("sample6_detailAddress").focus();
+                //document.getElementById("sample6_detailAddress").focus();
             }
         }).open();
-    }
-    </script>
-
+    } </script>
+    
     <script>
+    
         var pw = document.querySelector(".pw");
         var pw2 = document.querySelector(".pw2");
         var notSame = document.querySelector(".notSame");
 
+        var mailPrev = document.querySelector(".id");
         var mailDomain = document.querySelector(".mailDomain");
         var mailSelect = document.getElementById("mailSelect");
 
@@ -203,7 +205,68 @@
                 mailDomain.value = mailSelect.value;
             }
         }
+		
+        
+        var idCheck = document.querySelector(".idCheck");
+        var phoneCheck = document.querySelector(".phoneCheck");
+        var phone = document.querySelector(".phone");
+        var isIdChecked = false;
+        var isPhoneChecked = false;
+        
+        idCheck.onclick = function () {
+        	mailPrev = document.querySelector(".id");
+        	mailDomain = document.querySelector(".mailDomain");
+        	var wholeMail = mailPrev.value+"@"+mailDomain.value;
+        	fetch("idCheck.users", {
+        		method:"post",
+        		headers: {
+        			'Content-type': 'application/x-www-form-urlencoded'
+        		},
+        		body:"id="+wholeMail
+        	}).then(function(response) {
+				return response.json();
+			})
+			.then(function(data) {
+				console.log(data);
+				
+				if(data == 1) {
+					alert("이미 사용중인 아이디입니다.");
+					mailPrev.value="";
+				} else {
+					isIdChecked = true;
+					alert("사용 가능한 아이디입니다.");
+					
+				}
+			})
+			
+			
+        };
+        
+        phoneCheck.onclick = function () {
+        	fetch("phoneCheck.users", {
+        		method:"post",
+        		headers: {
+        			'Content-type': 'application/x-www-form-urlencoded'
+        		},
+        		body:"phone="+phone.value
+        		}).then(function(response) {
+        			return response.json();
+        		}).then(function(data) {
+        			console.log(data);
+        			
+        			if(data == 1) {
+    					alert("이미 사용중인 전화번호입니다.");
+    					mailPrev.value="";
+    				} else {
+    					isPhoneChecked = true;
+    					alert("사용 가능한 전화번호입니다.");
+    				}
+        	})
+        };
 
+               
+ 
+        	
         pw2.onblur = function () { //비밀번호 입력받는 칸 2개 값이 서로 다를때 <비밀번호가 일치하지 않습니다> 출력
             if (pw2.value != pw.value) {
                 pw2.value = "";
@@ -213,12 +276,25 @@
             }
         }
 
-        var phone = document.querySelector(".phone"); //핸드폰번호에서 '-'제거
+         //핸드폰번호에서 '-'제거
         phone.onblur = function() {
             var checked = phone.value.replace(/-/g ,"");
             phone.value = checked;
         }
-
+	
+        
+        function requiredCheck() {
+        	if (!isIdChecked) {
+        		alert("아이디 중복 체크를 해 주세요.");
+        		return false;
+        	} else if (pw2 == null) {
+        		alert("비밀번호를 알맞게 재입력해 주세요.");
+        		return false;
+        	} else if(!isPhoneChecked) {
+        		alert("연락처 중복 체크를 해 주세요.")
+        		return false;
+        	}
+        }
         
     </script>
 
