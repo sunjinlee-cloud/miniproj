@@ -32,7 +32,8 @@
 	    <mapper resource="mybatis/mapper/NoticeMapper.xml"/>
 	    <mapper resource="mybatis/mapper/UserMapper.xml"/>
 	    <mapper resource="mybatis/mapper/MainBoardMapper.xml"/>
-	    <mapper resource="mybatis/mapper/QnaMapper.xml"/>   
+	    <mapper resource="mybatis/mapper/QnaMapper.xml"/>
+	    <mapper resource="mybatis/mapper/PetMapper.xml"/>  
 	  </mappers>
 		<!-- 메퍼의 갯수만큼 전부 여기에 추가해줘야한다. -->
 

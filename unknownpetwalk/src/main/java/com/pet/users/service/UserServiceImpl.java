@@ -133,10 +133,9 @@ public class UserServiceImpl implements UsersService{
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		} else {
 			HttpSession session = request.getSession();
-//			request.setAttribute("mem_num", memNum);
+			request.setAttribute("mem_num", memNum);
 			session.setAttribute("UsersDTO", dto);
-			response.sendRedirect("../mainboard/mainboard_list.jsp");
-//			request.getRequestDispatcher("/mainboard/mainboard_list.jsp").forward(request, response);
+			request.getRequestDispatcher("/users/mypage.jsp").forward(request, response);
 //			UsersDTO dtoo = (UsersDTO) session.getAttribute("UsersDTO");
 //			System.out.println(dtoo.getMemNum());
 		}
@@ -181,8 +180,54 @@ public class UserServiceImpl implements UsersService{
 			response.sendRedirect("users/mypage.jsp");
 		}
 		sql.close();
+
 	}
 	
+	
+//	@Override
+//	public void addpet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		
+//		SqlSession sql = sqlSessionFactory.openSession(true);
+//		HttpSession session = request.getSession();
+//		UsersDTO dto = (UsersDTO) session.getAttribute("UsersDTO"); 
+//		
+//		String memNum = dto.getMemNum();
+//		String memType = dto.getMemType();
+//		String petName = request.getParameter("petName");
+//		String petPhoto = "사진을 업로드해주세요";
+//		String petBreed = request.getParameter("petType");
+//		int petAge =  Integer.parseInt(request.getParameter("petAge"));
+//		int petWeight = Integer.parseInt(request.getParameter("petWeight"));
+//		String petGender = request.getParameter("gender");
+//		String petIsmain = request.getParameter("petIsmain");
+//		String petIntro = request.getParameter("petIntro");
+//		
+//		if (memType == "P") {
+//			UserMapper user = sql.getMapper(UserMapper.class);
+//			user.userTypeChange(memNum);
+//		}
+//			
+//		PetMapper pet = sql.getMapper(PetMapper.class);
+//		PetDTO petdto = new PetDTO(null, petName, petPhoto, petBreed, petGender,petAge,petWeight,petIsmain,petIntro,memNum);
+//		int petResult = pet.registerpet(petdto);
+//		
+//		if (petResult == 1) {
+//			response.setContentType("text/html; charSet=UTF-8;");
+//			PrintWriter out = response.getWriter();
+//			out.println("<script>");
+//			out.println("alert('성공적으로 추가되었습니다.')");
+//			out.println("</script>");
+//		} else {
+//			response.setContentType("text/html; charSet=UTF-8;");
+//			PrintWriter out = response.getWriter();
+//			out.println("<script>");
+//			out.println("alert('오류로 인하여 추가에 실패하였습니다.')");
+//			out.println("</script>");
+//		}
+//		sql.close();
+//>>>>>>> 571a0079c32163fa5e3bb9bf5834d9f60742bb2d
+//	}
+//	
 	
 
 
@@ -265,10 +310,6 @@ public class UserServiceImpl implements UsersService{
 			response.sendRedirect("users/mypage.jsp");
 		}
 	}
-
-	
-
-	
 
 
 	

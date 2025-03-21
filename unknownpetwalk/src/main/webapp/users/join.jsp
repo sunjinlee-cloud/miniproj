@@ -214,7 +214,6 @@
         		alert("전화번호를 입력해 주세요");
         		return;
         	}
-        	
         	fetch("phoneCheck.users", {
         		method:"post",
         		headers: {
