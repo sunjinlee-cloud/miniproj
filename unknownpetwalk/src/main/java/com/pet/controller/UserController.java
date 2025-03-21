@@ -60,10 +60,10 @@ public class UserController extends HttpServlet {
 			request.getRequestDispatcher("/users/profilepage.jsp").forward(request, response);
 		} else if (command.equals("/users/modify.users")) {//회원정보 수정 페이지
 			service.modify(request, response);
-		} else if (command.equals("/users/addPet.users")) {
-			service.addpet(request, response);
 		} else if (command.equals("/users/delete.users")) {//회원 탈퇴 페이지
 			service.delete(request, response);
+		} else if (command.equals("/users/logout.users")) {
+			service.logout(request, response);
 		}
 		
 	}

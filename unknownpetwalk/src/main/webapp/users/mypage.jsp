@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%@ include file="../include/header.jsp" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,14 +19,6 @@
     
 </head>
 <body>
-    
-    <header>
-        <ul class = "menu">
-            <li style="float: left;"><a href=""><img src="../img/mainlogo.png" alt="logo" width="100px"></a></li>
-            <li><a href="">로그아웃</a></li>
-            <li><a href="">고객지원</a></li>
-        </ul>
-    </header>
 
     <section>
         <form action="modify.users" method="post" onsubmit="return validateForm()">
@@ -88,7 +83,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="modal-body">
-                            <form id="addPet" action="addPet.users" method="post">
+                            <form id="addPet" action="addPet.pet" method="post">
                             <p><div class="profile-img2">
                               <img src="../img/dog-seating.png"alt="강아지 프로필이미지">
                               <button type="button" class="addPetImg">이미지 추가</button>
@@ -189,35 +184,7 @@
     }
     </script>
 
-
-    <footer>
-        <div class="underminimenu">
-            <ul style="">
-                <li><a href="">소개</a></li>|
-                <li><a href="">메인서비스</a></li>|
-                <li><a href="">고객지원</a></li>|
-                <li><a href="">이용약관</a></li>|
-                <li><a href="">개인정보처리방침</a></li>
-            </ul>
-            <p>(주)모르는개산책 | 대표 박인욱 | 서울 강남구 테헤란로7길 7 (역삼동) 5층 | 대표 전화번호 : 010-1234-1234
-
-                소개 / 메인게시판 / 고객지원 / 이용약관 / 개인정보처리방침
-                
-                사업자 등록 번호 : 123-45-67890 | 동물자유연대 | 농림축산검역본부
-                
-                </p>
-        </div>
-        <div class="infoarea">
-            <p>Copyright 2025 Pet © All rights reserved.</p>
-        </div>
-    </footer>
-
-
     <script>
-
-        
-
-
         var addbtn = document.querySelector(".addbtn button")
         var pet = document.querySelector(".Mypage2");
         var btn1 = document.getElementById("btn1")
@@ -253,14 +220,7 @@
         return true;
         }
 
-       
-    
-
     </script>
-
-
-
-
 
 
 
@@ -269,3 +229,5 @@
     
 </body>
 </html>
+
+<%@ include file="../include/footer.jsp" %>	
