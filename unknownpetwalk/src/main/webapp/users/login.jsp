@@ -34,7 +34,6 @@
     </style>
 </head>
 <body> <!-- 선진 -->
-
     
     <section class="mainBoard">
         <div class="card">

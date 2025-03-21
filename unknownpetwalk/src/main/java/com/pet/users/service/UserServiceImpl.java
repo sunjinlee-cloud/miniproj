@@ -133,9 +133,10 @@ public class UserServiceImpl implements UsersService{
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		} else {
 			HttpSession session = request.getSession();
-			request.setAttribute("mem_num", memNum);
+//			request.setAttribute("mem_num", memNum);
 			session.setAttribute("UsersDTO", dto);
-			request.getRequestDispatcher("/users/mypage.jsp").forward(request, response);
+			response.sendRedirect("../mainboard/mainboard_list.jsp");
+//			request.getRequestDispatcher("/mainboard/mainboard_list.jsp").forward(request, response);
 //			UsersDTO dtoo = (UsersDTO) session.getAttribute("UsersDTO");
 //			System.out.println(dtoo.getMemNum());
 		}
@@ -184,6 +185,7 @@ public class UserServiceImpl implements UsersService{
 	}
 	
 	
+
 //	@Override
 //	public void addpet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		
@@ -225,10 +227,9 @@ public class UserServiceImpl implements UsersService{
 //			out.println("</script>");
 //		}
 //		sql.close();
-//>>>>>>> 571a0079c32163fa5e3bb9bf5834d9f60742bb2d
 //	}
 //	
-	
+
 
 
 	@Override
