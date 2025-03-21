@@ -25,13 +25,17 @@
         <div class="Int1">
             <div class="Int1-img">
             <img src="img/FileName3.png.jpeg" alt="강아지">
+                <div class="loginBox">
+                    <a href="users/login.jsp"><button type="button" class="login button3">로그인</button></a>
+                    <a href="users/join.jsp"><button type="button" class="join button3">회원 가입</button></a>
+                </div>
             </div>
           
         
             <div class= "Int2">         
-                    <h1 style="text-align: center; font-size:70px; margin-top: 40px; color: #F88257;">펫시터가 집으로!</h1>
-                    <h3 style="text-align: center; font-size: 40px; margin-top: 13px;">바쁜 현대인들을 위한 반려동물 돌봄 서비스</h3>
-                    <h3 style="text-align: center; font-size: 40px; margin-top: 13px; ">모르는개산책!</h3>
+                    <h1 style="text-align: center; font-size:70px; margin-top: 40px; color: #F88257;">산책은 반려견을 행복하게 합니다.</h3>
+                    <h3 style="text-align: center; font-size: 40px; margin-top: 13px;">바쁜 현대인들을 위한 반려동물 산책 대행 서비스</h3>
+                    <h3 style="text-align: center; font-size: 40px; margin-top: 13px; ">모르는개산책!</h1>
                 <div class="Int2-img">
                     <img src="img/bottom_image_mobile.png" alt="펫시터">
                 </div>
@@ -100,29 +104,9 @@
                     
              </div>
             </div>
-
-        
-
-        
         
     </section>
-
-
-    <footer>
-        <div class="underminimenu"> 
-            <ul style="">
-                <li><a href="">소개</a></li>|
-                <li><a href="">메인서비스</a></li>|
-                <li><a href="">고객지원</a></li>|
-                <li><a href="">이용약관</a></li>|
-                <li><a href="">개인정보처리방침</a></li>
-            </ul>
-            <p>(주)펫모시깽이 | 대표 박인욱 | 서울 강남구 테헤란로7길 7 (역삼동) 5층 | 대표 전화번호 : 010-1234-1234<br>
-                사업자 등록 번호 : 123-45-67890 | 어쩌고저쩌고 | 있어보이는 텍스트 (p 태그 )</p>
-        </div>
-        <div class="infoarea">
-            <p>Copyright 2025 Pet © All rights reserved.</p>
-        </div>
-    </footer>
+ 
 </body>
 </html>
+<%@ include file="../include/footer.jsp" %>	

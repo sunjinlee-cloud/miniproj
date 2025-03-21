@@ -7,63 +7,46 @@
         
 
     
-    .html, body{
-        font-family: "Poor Story", system-ui;
+    .html, body{font-family: "Poor Story", system-ui;
         font-weight: 400;
-        font-style: normal;
-        
-        
-      }
+        font-style: normal;}
       
   
-      img {
-            max-width: 100%;
-            height: auto    
-        }
+      img { max-width: 100%;
+            height: auto}
 
 
         /* 메인 영역 */
         section{
             height: 1900px;
-            width: 100%; 
-            
-
-            
-        }
+            width: 100%;}
         
         
         .Int1 {
             height: 500px;
         }
 
+        .Int1 {position: relative;}
+        .Int1-img > .loginBox {position: absolute; right: 150px; top: 50px;}
+
+        .Int1-img > .loginBox .button3 {border: 1px solid #f87a4c; color: beige; background-color: #F88257; font-size: 18px;
+            width: 70px; height: 35px; border-radius: 8%; font-family: "Poor Story", system-ui; font-weight: 600; font-style: normal;}
+
         .Int1-img >img {
             width: 100%;
             height: 500px;
             object-fit: cover; /* 비율 유지하면서 꽉 차게 */
-            object-position: center; /* 중앙 정렬 */
-            
-            
-        }
+            object-position: center; /* 중앙 정렬 */}
 
         
-        .Int2 {
-            width: 100%;
-            height: 400px;
-            overflow: hidden;
-        }
+        .Int2 {width: 100%; height: 400px; overflow: hidden;}
         
         .Int2-img > img {
             float: left;
             width: 400px;
             height: 150px;
-            margin-left: 100px;
-            
-            object-fit: cover;
-            
-        
+            margin-left: 100px; object-fit: cover;} 
 
-                
-        }
         .back-color {
         width: 100%;
         height: 400px;
@@ -77,9 +60,7 @@
         .Int3 {
             overflow: hidden;
         }
-        .dog-icon {
-            
-                display: flex; /* Flexbox 활성화 */
+        .dog-icon {display: flex; /* Flexbox 활성화 */
                 justify-content: center; /* 가로축 가운데 정렬 */
                 align-items: center; /* 세로축 가운데 정렬 */
                 height: 100%; /* 부모 요소의 높이 설정 */
