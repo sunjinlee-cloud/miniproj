@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%@ include file="../include/header.jsp" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,40 +20,7 @@
         li{display: inline-block;}
         a{color: black; text-decoration: none;}
 
-        /* 헤더 영역 */
-        header{
-            border-bottom: 1px solid #F88257;
-            width: 1000px;
-            height: 90px;
-            margin: 0 auto;
-        }
-        .menu{
-            overflow: hidden;
-        }
-        .menu > li{
-
-            width: 100px;
-            height: 90px;
-            float: right;
-            line-height: 90px;
-        }
-        /* 푸터 영역 */
-        footer{
-            height: 120px;
-            border-top: 1px solid #F88257;
-            font-weight: 100;
-            font-size: 10px;
-            text-align: center;
-            padding-top: 25px;
-        }
-        .underminimenu{
-            margin-bottom: 10px;
-        }
-        .underminimenu ul{
-            font-size: small; 
-            margin-bottom: 5px;
-        }
-
+        
         .mainBoard {text-align: center; width: 1000px; margin: 0 auto 100px auto;}
         .mainBoard .card {width: 500px; margin: 0 auto; text-align: center;}
         .mainBoard .card .photo {margin: 50px auto; width: 300px; height: auto;}
@@ -64,14 +34,6 @@
     </style>
 </head>
 <body> <!-- 선진 -->
-    <header>
-        <ul class = "menu">
-            <li style="float: left;"><a href=""><img src="../img/mainlogo.png" alt="logo" width="100px"></a></li>
-            <!--<li><a href="">로그아웃</a></li>-->
-            <!--<li><a href="">마이페이지</a></li>-->
-            <li><a href="">고객지원</a></li>
-        </ul>
-    </header>
     
     <section class="mainBoard">
         <div class="card">
@@ -116,22 +78,7 @@
 
     </script>
 
-    <footer>
-        <div class="underminimenu">
-            <ul style="">
-                <li><a href="">소개</a></li>|
-                <li><a href="">메인서비스</a></li>|
-                <li><a href="">고객지원</a></li>|
-                <li><a href="">이용약관</a></li>|
-                <li><a href="">개인정보처리방침</a></li>
-            </ul>
-            <p>(주)펫모시깽이 | 대표 박인욱 | 서울 강남구 테헤란로7길 7 (역삼동) 5층 | 대표 전화번호 : 010-1234-1234<br>
-                사업자 등록 번호 : 123-45-67890 | 어쩌고저쩌고 | 있어보이는 텍스트 (p 태그 )</p>
-        </div>
-        <div class="infoarea">
-            <p>Copyright 2025 Pet © All rights reserved.</p>
-        </div>
-    </footer>
-
 </body>
 </html>
+
+<%@ include file="../include/footer.jsp" %>	

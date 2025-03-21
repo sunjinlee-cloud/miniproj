@@ -125,14 +125,18 @@ public class UserServiceImpl implements UsersService{
 //		UsersDTO dto = user.login(map);
 		
 		if (dto == null) {
-			System.out.println("dto가 null임");
-			request.setAttribute("msg", "아이디와 비밀번호를 확인하세요");
+			response.setContentType("text/html; charSet=UTF-8;");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('아이디와 비밀번호를 확인하세요')");
+			out.println("</script>");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		} else {
 			HttpSession session = request.getSession();
-			request.setAttribute("mem_num", memNum);
+//			request.setAttribute("mem_num", memNum);
 			session.setAttribute("UsersDTO", dto);
-			request.getRequestDispatcher("/users/mypage.jsp").forward(request, response);
+			response.sendRedirect("../mainboard/mainboard_list.jsp");
+//			request.getRequestDispatcher("/mainboard/mainboard_list.jsp").forward(request, response);
 //			UsersDTO dtoo = (UsersDTO) session.getAttribute("UsersDTO");
 //			System.out.println(dtoo.getMemNum());
 		}
@@ -180,48 +184,7 @@ public class UserServiceImpl implements UsersService{
 	}
 	
 	
-	@Override
-	public void addpet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		SqlSession sql = sqlSessionFactory.openSession(true);
-		HttpSession session = request.getSession();
-		UsersDTO dto = (UsersDTO) session.getAttribute("UsersDTO"); 
-		
-		String memNum = dto.getMemNum();
-		String memType = dto.getMemType();
-		String petName = request.getParameter("petName");
-		String petPhoto = "사진을 업로드해주세요";
-		String petBreed = request.getParameter("petType");
-		int petAge =  Integer.parseInt(request.getParameter("petAge"));
-		int petWeight = Integer.parseInt(request.getParameter("petWeight"));
-		String petGender = request.getParameter("gender");
-		String petIsmain = request.getParameter("petIsmain");
-		String petIntro = request.getParameter("petIntro");
-		
-		if (memType == "P") {
-			UserMapper user = sql.getMapper(UserMapper.class);
-			user.userTypeChange(memNum);
-		}
-			
-		PetMapper pet = sql.getMapper(PetMapper.class);
-		PetDTO petdto = new PetDTO(null, petName, petPhoto, petBreed, petGender,petAge,petWeight,petIsmain,petIntro,memNum);
-		int petResult = pet.registerpet(petdto);
-		
-		if (petResult == 1) {
-			response.setContentType("text/html; charSet=UTF-8;");
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println("alert('성공적으로 추가되었습니다.')");
-			out.println("</script>");
-		} else {
-			response.setContentType("text/html; charSet=UTF-8;");
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println("alert('오류로 인하여 추가에 실패하였습니다.')");
-			out.println("</script>");
-		}
-		sql.close();
-	}
+
 
 	@Override
 	public void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -238,7 +201,7 @@ public class UserServiceImpl implements UsersService{
 		System.out.println("result는 : "+result);
 		if(result == 1) {
 			session.removeAttribute("UsersDTO");
-			response.sendRedirect("unknownpetwalk/introduction.jsp");
+			response.sendRedirect("../Introduction.jsp");
 		} else {
 			response.sendRedirect("users/mypage.jsp");
 		}
@@ -279,12 +242,77 @@ public class UserServiceImpl implements UsersService{
 		sql.close();
 	}
 
-	
+	@Override
+	public void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		session.removeAttribute("UsersDTO");
+		//response.sendRedirect("unknownpetwalk/introduction.jsp");
+		UsersDTO result = (UsersDTO)session.getAttribute("UsersDTO");
+		
+		if (result == null) {
+			response.setContentType("text/html; charSet=UTF-8;");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('정상적으로 로그아웃 되었습니다.')");
+			out.println("</script>");
+			response.sendRedirect("login.jsp");
+		} else {
+			response.setContentType("text/html; charSet=UTF-8;");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('로그아웃 중 오류가 발생하였습니다.')");
+			out.println("</script>");
+			response.sendRedirect("users/mypage.jsp");
+		}
+	}
 
 	
 
+	
+
 
 	
-	
+//	@Override
+//	public void addpet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		
+//		SqlSession sql = sqlSessionFactory.openSession(true);
+//		HttpSession session = request.getSession();
+//		UsersDTO dto = (UsersDTO) session.getAttribute("UsersDTO"); 
+//		
+//		String memNum = dto.getMemNum();
+//		String memType = dto.getMemType();
+//		String petName = request.getParameter("petName");
+//		String petPhoto = "사진을 업로드해주세요";
+//		String petBreed = request.getParameter("petType");
+//		int petAge =  Integer.parseInt(request.getParameter("petAge"));
+//		int petWeight = Integer.parseInt(request.getParameter("petWeight"));
+//		String petGender = request.getParameter("gender");
+//		String petIsmain = request.getParameter("petIsmain");
+//		String petIntro = request.getParameter("petIntro");
+//		
+//		if (memType == "P") {
+//			UserMapper user = sql.getMapper(UserMapper.class);
+//			user.userTypeChange(memNum);
+//		}
+//			
+//		PetMapper pet = sql.getMapper(PetMapper.class);
+//		PetDTO petdto = new PetDTO(null, petName, petPhoto, petBreed, petGender,petAge,petWeight,petIsmain,petIntro,memNum);
+//		int petResult = pet.registerpet(petdto);
+//		
+//		if (petResult == 1) {
+//			response.setContentType("text/html; charSet=UTF-8;");
+//			PrintWriter out = response.getWriter();
+//			out.println("<script>");
+//			out.println("alert('성공적으로 추가되었습니다.')");
+//			out.println("</script>");
+//		} else {
+//			response.setContentType("text/html; charSet=UTF-8;");
+//			PrintWriter out = response.getWriter();
+//			out.println("<script>");
+//			out.println("alert('오류로 인하여 추가에 실패하였습니다.')");
+//			out.println("</script>");
+//		}
+//		sql.close();
+//	}
 
 }
