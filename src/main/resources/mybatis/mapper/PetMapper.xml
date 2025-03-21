@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<?xml-model href=""?>
+<mapper namespace="com.pet.pet.model.PetMapper">
+
+	<insert id="registerpet" parameterType="com.pet.pet.model.PetDTO">
+		INSERT INTO PET (PET_NUM, PET_NAME, PET_PHOTO, PET_BREED, PET_GENDER, PET_AGE, PET_WEIGHT, PET_ISMAIN, PET_INTRO, MEM_NUM) VALUES(pet_seq.nextval,#{petName}, #{petPhoto}, #{petBreed}, #{petGender}, #{petAge}, #{petWeight}, #{petIsmain}, #{petIntro}, #{memNum})
+	</insert>
+
+</mapper>

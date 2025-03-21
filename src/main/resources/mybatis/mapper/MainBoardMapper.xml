@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 위의 3줄 필수로 넣기! -->
+
+<!-- namespace에는 구현할 인터페이스의 풀 패키지 명을 넣어줘야 한다. -->
+<mapper namespace="com.pet.board.model.MainBoardMapper">
+
+	<!-- 여기서부터 sql 구문을 작성한다. id는 인터페이스에서 선언한 메서드명. ;는 생략-->
+	<!-- SELECT구문은 resultType을 적고 반환받을 타입을 반드시 넣어야한다.-->
+	
+	<!-- 글 작성 -->
+	<insert id = "write">
+		INSERT INTO Board (board_num, board_title, regdate, board_content, pay, board_address, pet_num, mem_num) 
+		VALUES (BOARD_SEQ.NEXTVAL , #{boardTitle}, CURRENT_TIMESTAMP , #{boardContent}, #{pay}, #{boardAddress}, 'X', 'x' )
+	</insert>
+
+	<!-- 유저 정보 -->
+	<select id = "getMemberInfo" resultType = "com.pet.users.model.UsersDTO">
+		SELECT MEM_NICK, MEM_TYPE, MEM_ADDRESS, MEM_PHONE
+		FROM MEMBER 
+		WHERE MEM_NUM = #{memNum}
+	</select>
+	
+	<!-- 동물 전체 이름 -->
+	<select id = "getPetName">
+		SELECT PET_NAME 
+		FROM PET
+		WHERE MEM_NUM = #{memNum} AND PET_ISMAIN = 'N'
+	</select>
+	
+	<!-- 글 작성 동물정보 -->
+	<select id = "getPetInfo">
+		SELECT * 
+		FROM PET
+		WHERE MEM_NUM = #{memNum}AND PET_ISMAIN ='Y'
+	</select>
+	
+</mapper>
+	
+	
+	

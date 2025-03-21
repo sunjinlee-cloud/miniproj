@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<?xml-model href=""?>
+<mapper namespace="com.pet.users.model.UserMapper">
+<!-- namespace : 구현할 인터페이스의 풀패키지명을 포함한 명칭이 들어감 -->
+
+	<!-- 아이디에는 인터페이스의 메서드명이 들어간다. 
+		select문은 결과를 반환받기 위해서 resulttype을 적어 줘야 한다. 소문자로 적어야 함
+		반환타입에는 string, int, double, array, dto등이 있음. -->
+	<!-- 파라미터 값이 있으면 이 파라미터에 대한 타입을 지정해 준다(필수는 아님) -->
+	<insert id="join" parameterType="com.pet.users.model.UsersDTO">
+		INSERT INTO MEMBER (mem_num, mem_pw, mem_photo, mem_nick, mem_type, mem_address, mem_phone, mem_gender, mem_intro) VALUES(#{memNum},#{memPw},#{memPhoto},#{memNick},#{memType},#{memAddress},#{memPhone},#{memGender},#{memIntro})
+		<!-- JDBC에서 물음표였던게 #{}로 바뀜, 안에 들어가는 파라미터 이름은 getter명 따라감 --> 
+	</insert><!-- 원하는 쿼리문을 적되 세미콜론은 안찍는다. -->
+	
+	
+	<select id="idDuplicationCheck" parameterType="string">
+		SELECT COUNT(*) FROM MEMBER WHERE MEM_NUM=#{memNum}
+	</select>
+	
+	<select id="phoneDuplicationCheck" parameterType="String">
+		SELECT COUNT(*) FROM MEMBER WHERE MEM_PHONE=#{phone}
+	</select>
+	
+	
+	<!-- 로그인시 select * 해서 dto에 담아 반환하는 쿼리문 작성해야함 -->
+	<select id="login" parameterType="com.pet.users.model.UsersDTO" resultType="com.pet.users.model.UsersDTO">
+		SELECT * FROM MEMBER WHERE MEM_NUM=#{memNum} AND MEM_PW=#{memPw}
+	</select>
+	
+	
+	
+	
+	
+	
+	<select id="profile1" parameterType="string" resultType="com.pet.users.model.UsersDTO">
+		SELECT MEM_PHOTO, MEM_NICK, MEM_INTRO FROM MEMBER WHERE MEM_NUM=#{memNum} <!-- 프사 -->
+	</select> 
+	
+	<select id="profile2" parameterType="string" resultType="com.pet.users.model.ProfileDTO">
+		SELECT COALESCE(COUNT(*), 0) AS count, ROUND(COALESCE(AVG(REVIEW_SCORE),0), 2) AS avgReviewScore, ROUND(COALESCE(AVG(PAY), 0),-2) AS avgPay FROM BOARD WHERE JOB_TAKER=#{memNum}
+		<!-- 맡은 건 수, 평균평점, 평균의뢰금액 -->
+	</select>
+	
+	<select id="worklist" parameterType="string" resultType="string">
+		SELECT BOARD_TITLE FROM (SELECT * FROM BOARD WHERE JOB_TAKER=#{memNum} ORDER BY REGDATE DESC) WHERE ROWNUM <![CDATA[<]]> 4 
+	</select>
+	
+	<select id="writelist" parameterType="string" resultType="string">
+		SELECT * FROM (SELECT * FROM BOARD WHERE MEM_NUM=#{memNum} ORDER BY REGDATE DESC) WHERE ROWNUM <![CDATA[<]]> 4
+	</select>
+	
+
+	<delete id="delete" parameterType="string">
+		DELETE FROM MEMBER WHERE MEM_NUM=#{memNum}
+	</delete>
+
+
+	<update id="modify" parameterType="com.pet.users.model.UsersDTO">
+		UPDATE MEMBER SET MEM_PW=#{memPw}, MEM_NICK=#{memNick}, MEM_ADDRESS=#{memAddress}, MEM_PHONE=#{memPhone}, MEM_INTRO=#{memIntro} WHERE MEM_NUM=#{memNum}
+	</update>
+
+	<insert id="addpet" parameterType="com.pet.pet.model.PetDTO">
+		INSERT INTO PET (PET_NUM, PET_NAME, PET_PHOTO, PET_BREED, PET_GENDER, PET_WEIGHT, PET_AGE, PET_ISMAIN, PET_INTRO, PET_NUM) VALUES(pet_seq.nextval,#{petName}, #{petPhoto}, #{petBreed}, #{gender}, #{petWeight}, #{petAge}, #{petIsmain}, #{petIntro}, #{memNum})
+	</insert>
+
+	<update id="userTypeChange" parameterType="string">
+		UPDATE MEMBER SET MEM_TYPE='U' WHERE MEM_NUM=#{memNum};
+	</update>
+
+
+
+
+
+
+
+</mapper>
