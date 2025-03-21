@@ -2,35 +2,35 @@ package com.pet.users.model;
 
 public class ProfileDTO {
 	
-	private String worksDone;
-	private double avgScore;
+	private int count;
+	private double avgReviewScore;
 	private int avgPay;
 	
 	public ProfileDTO() {
 		
 	}
-	
-	public ProfileDTO(String worksDone, double avgScore, int avgPay) {
+
+	public ProfileDTO(int count, double avgReviewScore, int avgPay) {
 		super();
-		this.worksDone = worksDone;
-		this.avgScore = avgScore;
+		this.count = count;
+		this.avgReviewScore = avgReviewScore;
 		this.avgPay = avgPay;
 	}
 
-	public String getWorksDone() {
-		return worksDone;
+	public int getCount() {
+		return count;
 	}
 
-	public void setWorksDone(String worksDone) {
-		this.worksDone = worksDone;
+	public void setCount(int count) {
+		this.count = count;
 	}
 
-	public double getAvgScore() {
-		return avgScore;
+	public double getAvgReviewScore() {
+		return avgReviewScore;
 	}
 
-	public void setAvgScore(double avgScore) {
-		this.avgScore = avgScore;
+	public void setAvgReviewScore(double avgReviewScore) {
+		this.avgReviewScore = avgReviewScore;
 	}
 
 	public int getAvgPay() {
@@ -40,6 +40,10 @@ public class ProfileDTO {
 	public void setAvgPay(int avgPay) {
 		this.avgPay = avgPay;
 	}
+
+	
+	
+	
 	
 	
 	

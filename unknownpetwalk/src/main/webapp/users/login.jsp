@@ -66,7 +66,7 @@
 <body> <!-- 선진 -->
     <header>
         <ul class = "menu">
-            <li style="float: left;"><a href=""><img src="img/mainlogo.png" alt="logo" width="100px"></a></li>
+            <li style="float: left;"><a href=""><img src="../img/mainlogo.png" alt="logo" width="100px"></a></li>
             <!--<li><a href="">로그아웃</a></li>-->
             <!--<li><a href="">마이페이지</a></li>-->
             <li><a href="">고객지원</a></li>
