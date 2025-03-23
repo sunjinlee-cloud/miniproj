@@ -45,22 +45,41 @@ public class MainBoardController extends HttpServlet {
 
 			
 				
-				if(command.equals("/mainboard/write.main")) { //연결할곳에서 요청을 받아서
+				if(command.equals("/mainboard/write.main")) {
 					
 					//해당 페이지로 넘긴다.
 					service.mainboardGetView(request, response);
 					request.getRequestDispatcher("/mainboard/mainboard_write.jsp").forward(request, response);
 					 
-				} else if(command.equals("/mainboard/list.main")) { //연결할곳에서 요청을 받아서
+				} else if(command.equals("/mainboard/regist.main")) { //글등록
 					
 					
-					//해당 페이지로 넘긴다.
-
 					service.mainboardWrite(request, response);
-					request.getRequestDispatcher("/mainboard/mainboard_list.html").forward(request, response);
+					response.sendRedirect("list.main");
+				} else if(command.equals("/mainboard/list.main")){// 글 목록
 					
+					service.mainboardList(request, response);
+					request.getRequestDispatcher("/mainboard/mainboard_list.jsp").forward(request, response);
+				} else if(command.equals("/mainboard/board.main")) { //글 상세
+					
+					service.mainboard(request, response);
+					request.getRequestDispatcher("/mainboard/mainboard.jsp").forward(request,response);
+				} else if(command.equals("/mainboard/boardregist.main")) { //댓글 등록
+					
+					service.mainboardApply(request, response);
+					response.sendRedirect("list.main");
+				} else if(command.equals("/mainboard/delete.main")) { //글삭제
+					service.mainboardDelete(request, response);
+					response.sendRedirect("list.main");
+				} else if(command.equals("/mainboard/modify.main")) { //글 수정페이지로
+					
+					service.mainboardModify(request, response);
+					request.getRequestDispatcher("/mainboard/mainboard_modify.jsp").forward(request, response);
+				} else if(command.equals("/mainboard/update.main")) { //글 수정
+					service.mainboardUpdate(request, response);
+					response.sendRedirect("list.main");
 				}
-	
+				
 	
 	
 	

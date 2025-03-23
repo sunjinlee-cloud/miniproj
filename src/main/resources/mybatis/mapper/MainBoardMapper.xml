@@ -11,8 +11,8 @@
 	
 	<!-- 글 작성 -->
 	<insert id = "write">
-		INSERT INTO Board (board_num, board_title, regdate, board_content, pay, board_address, pet_num, mem_num) 
-		VALUES (BOARD_SEQ.NEXTVAL , #{boardTitle}, CURRENT_TIMESTAMP , #{boardContent}, #{pay}, #{boardAddress}, 'X', 'x' )
+		INSERT INTO Board (board_num, board_title, regdate, board_content, pay, board_address, board_type, pet_num, mem_num) 
+		VALUES (BOARD_SEQ.NEXTVAL , #{boardTitle}, CURRENT_TIMESTAMP , #{boardContent}, #{pay}, #{boardAddress}, #{boardType},#{petNum}, #{memNum} )
 	</insert>
 
 	<!-- 유저 정보 -->
@@ -22,20 +22,77 @@
 		WHERE MEM_NUM = #{memNum}
 	</select>
 	
-	<!-- 동물 전체 이름 -->
-	<select id = "getPetName">
-		SELECT PET_NAME 
-		FROM PET
-		WHERE MEM_NUM = #{memNum} AND PET_ISMAIN = 'N'
-	</select>
-	
-	<!-- 글 작성 동물정보 -->
-	<select id = "getPetInfo">
+	<!-- 동물 전체 정보 -->
+	<select id = "getPetName" resultType = "com.pet.pet.model.PetDTO" >
 		SELECT * 
 		FROM PET
-		WHERE MEM_NUM = #{memNum}AND PET_ISMAIN ='Y'
+		WHERE MEM_NUM = #{memNum}
+		ORDER BY PET_ISMAIN DESC
 	</select>
 	
+	
+	<!-- 메인 게시글 리스트 -->
+	<select id = "getBoardList" resultType = "com.pet.board.model.BoardDTO">
+		SELECT *
+		FROM BOARD
+		WHERE BOARD_TYPE IS NOT NULL
+		ORDER BY REGDATE DESC
+	</select>
+	
+	<select id = "getBoardListPet" resultType = "com.pet.pet.model.PetDTO">
+		SELECT *
+		FROM PET
+	</select>
+	
+
+	<!-- 글 상세 -->
+	<select id = "getBoard" resultType = "com.pet.board.model.BoardDTO">
+		SELECT *
+		FROM BOARD
+		WHERE BOARD_NUM = #{boardNum}
+	</select>
+	
+	<select id = "getBoardPet" resultType = "com.pet.pet.model.PetDTO">
+		SELECT *
+		FROM PET
+		WHERE PET_NUM = #{petNum}
+	</select>
+	
+	<select id = "getBoardUser" resultType = "com.pet.users.model.UsersDTO">
+		SELECT *
+		FROM MEMBER
+		WHERE MEM_NUM = #{memNum}
+	</select>
+	
+	
+	<!-- 댓글 부르기 -->
+	<select id = "getApply" resultType = "com.pet.apply.model.ApplyDTO">
+		SELECT *
+		FROM APPLY
+		WHERE BOARD_NUM = #{boardNum}
+	</select>
+	
+	<!-- 댓글쓰기 -->
+	<insert id = "setApply">
+		INSERT INTO APPLY (APPLY_NUM, MEM_NUM, APPLY_CONTENT, APPLY_DATE, BOARD_NUM) 
+		VALUES(APPLY_SEQ.NEXTVAL, #{memNum}, #{applyContent}, CURRENT_TIMESTAMP, #{boardNum})
+	</insert> 
+	
+	<!-- 글 지우기 -->
+	<delete id = "deleteBoard">
+		DELETE BOARD
+		WHERE BOARD_NUM = #{boardNum}
+	</delete>
+	
+	<!-- 글 수정 -->
+	<update id = "updateBoard">
+		UPDATE BOARD 
+		SET BOARD_TITLE = #{boardTitle}, 
+		BOARD_CONTENT = #{boardContent}, 
+		PAY = #{pay}, 
+		REGDATE = CURRENT_TIMESTAMP
+		WHERE BOARD_NUM = #{boardNum}
+	</update>
 </mapper>
 	
 	
