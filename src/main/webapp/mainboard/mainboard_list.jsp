@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    <% session.setAttribute("login", "ddd@naver.com" ); session.setMaxInactiveInterval(3600); %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,20 +83,18 @@
 </head>
 <body> <!-- 선진 -->
 
-    <header>
-        <ul class = "menu">
-            <li style="float: left;"><a href=""><img src="img/mainlogo.png" alt="logo" width="100px"></a></li>
-            <li><a href="">로그아웃</a></li>
-            <li><a href="">마이페이지</a></li>
-            <li><a href="">고객지원</a></li>
-        </ul>
-    </header>
+<%@ include file="../include/header.jsp" %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+    <style>*{font-family: "Poor Story", system-ui;}</style>
     
     <div class="mainBoard">
         <div class="section">
             <div class="leftBox">
                 <button type="button" class="jobFinding">산책 일 찾아요</button>
                 <button type="button" class="workerFinding">돌보미 찾아요</button>
+                <a href="write.main"><button type="button" class="write">글쓰기</button></a>
             </div>
             <div class="rightBox">
                 <form action="" method="get">
@@ -110,12 +110,14 @@
             </div>
         </div>
         <div class="article">
+        	
+        	<c:forEach var="list" items="${list}">
                 <div class="card">
                     <div class="cardLeft">
-                        <a class="a" href="유저프로필"></a>
+                        <a class="a" href="board.main?boardNum=${list.boardNum}&petNum=${list.petNum}&memNum=${list.memNum}"></a>
                     </div>
                     <div class="cardMiddle">
-                        <div class="cardMiddleUpper"><h4>3살 말 잘 듣는 비숑아가 산책시켜주실 분 구해요</h4></div>
+                        <div class="cardMiddleUpper"><h4>${list.boardTitle}</h4></div>
                         <div class="tagBox">
                             <div class="tag tags1">#순딩이</div>
                             <div class="tag tags2">#1시간정도 원해요</div>
@@ -123,112 +125,16 @@
                         </div>
                     </div>
                     <div class="cardRight">
-                        <div class="location">역삼동</div>
-                        <div class="price">15,000원</div>
+                        <div class="location">${list.boardAddress}</div>
+                        <div class="price">${list.pay}원</div>
                     </div>
-                    <div class="doneOrNot">
-                        구인 중
-                    </div>
+                    <div class="doneOrNot">${list.boardType}</div>
                 </div>
-                <div class="card">
-                    <div class="cardLeft">
-                        <a class="a" href="유저프로필"></a>
-                    </div>
-                    <div class="cardMiddle">
-                        <div class="cardMiddleUpper"><h4>3살 말 잘 듣는 비숑아가 산책시켜주실 분 구해요</h4></div>
-                        <div class="tagBox">
-                            <div class="tag tags1">#순딩이</div>
-                            <div class="tag tags2">#1시간정도 원해요</div>
-                            <div class="tag tags3">#주 2회 좋아요</div>
-                        </div>
-                    </div>
-                    <div class="cardRight">
-                        <div class="location">역삼동</div>
-                        <div class="price">15,000원</div>
-                    </div>
-                    <div class="doneOrNot">
-                        구인 중
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="cardLeft">
-                        <a class="a" href="유저프로필"></a>
-                    </div>
-                    <div class="cardMiddle">
-                        <div class="cardMiddleUpper"><h4>3살 말 잘 듣는 비숑아가 산책시켜주실 분 구해요</h4></div>
-                        <div class="tagBox">
-                            <div class="tag tags1">#순딩이</div>
-                            <div class="tag tags2">#1시간정도 원해요</div>
-                            <div class="tag tags3">#주 2회 좋아요</div>
-                        </div>
-                    </div>
-                    <div class="cardRight">
-                        <div class="location">역삼동</div>
-                        <div class="price">15,000원</div>
-                    </div>
-                    <div class="doneOrNot">
-                        구인 중
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="cardLeft">
-                        <a class="a" href="유저프로필"></a>
-                    </div>
-                    <div class="cardMiddle">
-                        <div class="cardMiddleUpper"><h4>3살 말 잘 듣는 비숑아가 산책시켜주실 분 구해요</h4></div>
-                        <div class="tagBox">
-                            <div class="tag tags1">#순딩이</div>
-                            <div class="tag tags2">#1시간정도 원해요</div>
-                            <div class="tag tags3">#주 2회 좋아요</div>
-                        </div>
-                    </div>
-                    <div class="cardRight">
-                        <div class="location">역삼동</div>
-                        <div class="price">15,000원</div>
-                    </div>
-                    <div class="doneOrNot N">
-                        구인 중
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="cardLeft">
-                        <a class="a" href="유저프로필"></a>
-                    </div>
-                    <div class="cardMiddle">
-                        <div class="cardMiddleUpper"><h4>3살 말 잘 듣는 비숑아가 산책시켜주실 분 구해요</h4></div>
-                        <div class="tagBox">
-                            <div class="tag tags1">#순딩이</div>
-                            <div class="tag tags2">#1시간정도 원해요</div>
-                            <div class="tag tags3">#주 2회 좋아요</div>
-                        </div>
-                    </div>
-                    <div class="cardRight">
-                        <div class="location">역삼동</div>
-                        <div class="price">15,000원</div>
-                    </div>
-                    <div class="doneOrNot Y">
-                        구인 완료
-                    </div>
-                </div>    
+                </c:forEach>
         </div>
     </div>
 
-    <footer>
-        <div class="underminimenu">
-            <ul style="">
-                <li><a href="">소개</a></li>|
-                <li><a href="">메인서비스</a></li>|
-                <li><a href="">고객지원</a></li>|
-                <li><a href="">이용약관</a></li>|
-                <li><a href="">개인정보처리방침</a></li>
-            </ul>
-            <p>(주)펫모시깽이 | 대표 박인욱 | 서울 강남구 테헤란로7길 7 (역삼동) 5층 | 대표 전화번호 : 010-1234-1234<br>
-                사업자 등록 번호 : 123-45-67890 | 어쩌고저쩌고 | 있어보이는 텍스트 (p 태그 )</p>
-        </div>
-        <div class="infoarea">
-            <p>Copyright 2025 Pet © All rights reserved.</p>
-        </div>
-    </footer>
+<%@ include file="../include/footer.jsp" %>
     
     <script>
         var cards = document.querySelectorAll(".card");
@@ -253,6 +159,10 @@
                 
             }
         }        
+
+        
+
+
         //구인완료인 경우 회색으로 보이게 하기
     </script>
 

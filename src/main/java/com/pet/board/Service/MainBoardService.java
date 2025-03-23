@@ -11,4 +11,10 @@ public interface MainBoardService {
 	
 	void mainboardGetView(HttpServletRequest request, HttpServletResponse response) throws ServerException, IOException;
 	void mainboardWrite(HttpServletRequest request, HttpServletResponse response) throws ServerException, IOException;
+	void mainboard(HttpServletRequest request, HttpServletResponse response) throws ServerException, IOException;
+	void mainboardList(HttpServletRequest request, HttpServletResponse response) throws ServerException, IOException;
+	void mainboardApply(HttpServletRequest request, HttpServletResponse response) throws ServerException, IOException;
+	void mainboardDelete(HttpServletRequest request, HttpServletResponse response) throws ServerException, IOException;
+	void mainboardModify(HttpServletRequest request, HttpServletResponse response) throws ServerException, IOException;
+	void mainboardUpdate(HttpServletRequest request, HttpServletResponse response) throws ServerException, IOException;
 }
