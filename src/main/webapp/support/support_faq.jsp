@@ -7,9 +7,9 @@
 
 <body>
 <div class="nav">
-    <a href="${pageContext.request.contextPath}/support/notice_list.notice" class="navmenu">공지사항</a>
+    <a href="${pageContext.request.contextPath}/support/notice_list.notice" class="navmenu">공지</a>
     <a href="${pageContext.request.contextPath}/support/support_faq.jsp" class="navmenu">FAQ</a>
-    <a href="${pageContext.request.contextPath}/support/qna_list.qna" class="navmenu">1대1 문의</a>
+    <a href="${pageContext.request.contextPath}/support/qna_list.qna" class="navmenu" class="navmenu">1대1</a>
 </div>
     <article class="main-section">
         <div class="main-title">모르는개산책 회원님, 도움이 필요하신가요?</div>
@@ -21,7 +21,7 @@
         <span class="faq-lo">FAQ</span><br>
     </div>
 
-    <div id="faq-dropdown">
+    
         <c:forEach var="faq" items="${faqList}">
             <div class="announce faqcontent">
                 <div class="faqcontent-left">
@@ -74,7 +74,6 @@
             <a href="" class="faqcontent-right">o
             </a>
         </div>
-    </div>
     </div>
 
     <script>
