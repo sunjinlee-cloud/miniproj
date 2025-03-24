@@ -15,22 +15,22 @@
 
 <%@ include file="../include/header.jsp" %>
 
-
-<link rel="stylesheet" href="../css/support_qna_list.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/support_qna_list.css">
 
 <body>
 <section>
-<div class="nav">
-    <a href="${pageContext.request.contextPath}/support/support_notice_list.jsp" class="navmenu">공지사항</a>
-    <a href="${pageContext.request.contextPath}/support/support_faq.jsp" class="navmenu">FAQ</a>
-    <a href="${pageContext.request.contextPath}/support/support_qna_list.jsp" class="navmenu">1대1 문의</a>
-</div>
-	<div class="support-banner">
-    <img src="${pageContext.request.contextPath}/img/support_banner.jpg" alt="고객지원 배너">
-</div>
+    <div class="nav">
+        <a href="${pageContext.request.contextPath}/support/support_notice_list.jsp" class="navmenu">공지사항</a>
+        <a href="${pageContext.request.contextPath}/support/support_faq.jsp" class="navmenu">FAQ</a>
+        <a href="${pageContext.request.contextPath}/support/qna_list.qna" class="navmenu">1대1 문의</a>
+    </div>
+
+    <div class="support-banner">
+        <img src="${pageContext.request.contextPath}/img/support_banner.jpg" alt="고객지원 배너">
+    </div>
 
     <div class="container">
-        <p class="qna">1대1 문의</p>
+        <p class="qna-title">1대1 문의</p>
         <hr class="qna-line">
 
         <c:if test="${not empty qnaList}">
@@ -53,12 +53,11 @@
                     <div class="column date">
                         <c:out value="${qna.qnaDate}" />
                     </div>
-                    
                 </div>
             </c:forEach>
 
             <c:if test="${empty qnaList}">
-                <div class="board-row">
+                <div class="board-row no-data">
                     <div class="column subject" style="text-align:center;">
                         작성된 문의가 없습니다.
                     </div>
@@ -67,10 +66,11 @@
         </div>
 
         <div class="board-bottom">
-    <div class="mb-submit">
-        <input type="button" value="글쓰기" onclick="location.href='${pageContext.request.contextPath}/support/qna_insertForm.qna'">
-    </div>
-</div>
+            <div class="mb-submit">
+                <input type="button" value="글쓰기"
+                    onclick="location.href='${pageContext.request.contextPath}/support/qna_insertForm.qna'">
+            </div>
+        </div>
     </div>
 </section>
 

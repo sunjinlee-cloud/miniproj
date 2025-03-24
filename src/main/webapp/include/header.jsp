@@ -48,7 +48,7 @@
 					<li style="float: left;"><a href="${pageContext.request.contextPath}/mainboard/mainboard_list.jsp"><img src="../img/mainlogo.png" alt="logo" width="100px"></a></li>
 						<li><a href="#" class="logout">로그아웃</a></li>
 						<li><a href="${pageContext.request.contextPath}/users/mypage.jsp">마이페이지</a></li>
-						<li><a href="${pageContext.request.contextPath}/support/support_notice_list.html">고객지원</a></li>
+						<li><a href="${pageContext.request.contextPath}/support/support_notice_list.jsp">고객지원</a></li>
 					</c:otherwise>
 			</c:choose>
         </ul>
