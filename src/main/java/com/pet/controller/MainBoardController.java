@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.pet.board.Service.MainBoardService;
 import com.pet.board.Service.MainBoardServiceImpl;
@@ -41,9 +42,17 @@ public class MainBoardController extends HttpServlet {
 				
 				System.out.println("요청경로:" + command);
 		
-				MainBoardService service = new MainBoardServiceImpl();
 
-			
+				MainBoardService service = new MainBoardServiceImpl();
+				HttpSession session = request.getSession();
+				
+				//로그인 여부 확인
+				if(session.getAttribute("UsersDTO")==null) {
+					response.sendRedirect("../users/login.jsp");
+					return;
+				}	
+
+				
 				
 				if(command.equals("/mainboard/write.main")) {
 					
@@ -78,7 +87,12 @@ public class MainBoardController extends HttpServlet {
 				} else if(command.equals("/mainboard/update.main")) { //글 수정
 					service.mainboardUpdate(request, response);
 					response.sendRedirect("list.main");
+				} else if(command.equals("/mainboard/applydelete.main")) { //댓글삭제
+					
+					service.mainboardApplyDelete(request, response);
+					response.sendRedirect("list.main");
 				}
+			
 				
 	
 	

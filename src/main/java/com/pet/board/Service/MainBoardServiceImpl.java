@@ -28,6 +28,9 @@ public class MainBoardServiceImpl implements MainBoardService {
 	@Override 
 	public void mainboardWrite(HttpServletRequest request, HttpServletResponse response)
 			throws ServerException, IOException {
+		HttpSession session = request.getSession();
+		UsersDTO mem = (UsersDTO)session.getAttribute("UsersDTO"); 
+		String memNum = mem.getMemNum();
 		
 		String boardTitle = request.getParameter("title");
 		String boardContent = request.getParameter("content");
@@ -35,8 +38,9 @@ public class MainBoardServiceImpl implements MainBoardService {
 		//주소와 상세주소를 합침
 		String boardAddress = request.getParameter("address")+" "+request.getParameter("addressDetail");
 		String boardType = request.getParameter("boardType");
-		//현재 세션 memNum을 받아옴
-		String memNum = (String)request.getSession().getAttribute("login");
+		
+		
+
 		//petNum의 유무에 따라 null 지정
 		String petNum = request.getParameter("petNum").equals("null") ? null : request.getParameter("petNum");
 		
@@ -57,7 +61,7 @@ public class MainBoardServiceImpl implements MainBoardService {
 		
 	}
 
-	//글 작성 기본 화면 띄워주기
+	//글 작성 화면 띄워주기
 	@Override 	
 	public void mainboardGetView(HttpServletRequest request, HttpServletResponse response)
 			throws ServerException, IOException {
@@ -69,14 +73,11 @@ public class MainBoardServiceImpl implements MainBoardService {
 		
 		//로그인 아이디 세션 조회
 		HttpSession session = request.getSession();
-
-		String memNum = (String)session.getAttribute("login");
-		System.out.println(memNum);
+		UsersDTO memNum = (UsersDTO)session.getAttribute("UsersDTO"); 
 		
-		
-		UsersDTO dto = member.getMemberInfo(memNum);
+		UsersDTO dto = member.getMemberInfo(memNum.getMemNum());
 
-		List <PetDTO> petName = member.getPetName(memNum);
+		List <PetDTO> petName = member.getPetName(memNum.getMemNum());
 
 			
 		
@@ -114,7 +115,6 @@ public class MainBoardServiceImpl implements MainBoardService {
 		
 	}
 
-
 	@Override
 	public void mainboard(HttpServletRequest request, HttpServletResponse response)
 			throws ServerException, IOException {
@@ -142,6 +142,11 @@ public class MainBoardServiceImpl implements MainBoardService {
 			}
 		}
 		
+		
+	    HttpSession session = request.getSession();
+		UsersDTO lo = (UsersDTO)session.getAttribute("UsersDTO"); 
+		
+	    request.setAttribute("lo", lo);
 		request.setAttribute("board", board);
 		request.setAttribute("pet", pet);
 		request.setAttribute("mem", mem);
@@ -160,8 +165,7 @@ public class MainBoardServiceImpl implements MainBoardService {
 		MainBoardMapper member = sql.getMapper(MainBoardMapper.class);
 		
 		ArrayList<BoardDTO> list = member.getBoardList();
-//		ArrayList<PetDTO> petList = member.getBoardListPet();
-		
+
 		for(BoardDTO li : list) {
 			String petNum = li.getPetNum();
 			if(li.getBoardType().equals("U")){
@@ -170,8 +174,7 @@ public class MainBoardServiceImpl implements MainBoardService {
 				li.setBoardType("구직중");
 			}
 		}
-		
-		
+
 		request.setAttribute("list", list );
 	}
 
@@ -180,7 +183,8 @@ public class MainBoardServiceImpl implements MainBoardService {
 			throws ServerException, IOException {
 		
 		HttpSession session = request.getSession();
-		String memNum = (String)session.getAttribute("login");
+		UsersDTO mem = (UsersDTO)session.getAttribute("UsersDTO"); 
+		String memNum = mem.getMemNum();
 		String applyContent = request.getParameter("applyContent");
 		String boardNum = request.getParameter("boardNum");
 		
@@ -197,6 +201,17 @@ public class MainBoardServiceImpl implements MainBoardService {
 		member.setApply(dto);
 	}
 
+
+	@Override
+	public void mainboardApplyDelete(HttpServletRequest request, HttpServletResponse response)
+			throws ServerException, IOException {
+		String applyNum = request.getParameter("applyNum");
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		MainBoardMapper member = sql.getMapper(MainBoardMapper.class);
+		member.applyDelete(applyNum);
+		
+	}
+	
 	@Override
 	public void mainboardDelete(HttpServletRequest request, HttpServletResponse response)
 			throws ServerException, IOException {
@@ -210,7 +225,6 @@ public class MainBoardServiceImpl implements MainBoardService {
 	}
 	
 	
-
 	@Override
 	public void mainboardModify(HttpServletRequest request, HttpServletResponse response)
 			throws ServerException, IOException {
@@ -242,6 +256,8 @@ public class MainBoardServiceImpl implements MainBoardService {
 		
 		member.updateBoard(dto);
 	}
+
+
 	
 	
 

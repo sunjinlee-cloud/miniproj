@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-    <% session.setAttribute("login", "ddd@naver.com" ); session.setMaxInactiveInterval(3600); %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,7 +62,7 @@
         .card {margin: 5% auto; padding: 10px; width: 90%; height: 150px; overflow: hidden; 
             border: 1px solid #F88257; border-bottom: 2px solid #F88257; position: relative; animation: ease-in-out;}
         .card .cardLeft {height: 100%; width: 25%; display: block; float: left; }
-        .card .cardLeft .a {height: 90%; width: 90%; margin: 5% auto; display: block; background-image: url("img/dog.jpg"); 
+        .card .cardLeft .a {height: 90%; width: 90%; margin: 5% auto; display: block; background-image: url("../img/KakaoTalk_20250308_141848131.jpg"); 
             background-repeat: no-repeat; background-size: cover; background-position: center;}
         .card .cardMiddle {height: 100%; width: 50%; float: left; margin: 0 auto; 
             }
