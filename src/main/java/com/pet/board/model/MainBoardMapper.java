@@ -36,6 +36,7 @@ public interface MainBoardMapper {
 	//메인 글 리스트
 	ArrayList<BoardDTO> getBoardList();
 	ArrayList<PetDTO> getBoardListPet(String petNum);
+	ArrayList<BoardListDTO> getBoardLi();
 	
 	//메인 글 삭제
 	void deleteBoard(String boardNum);
