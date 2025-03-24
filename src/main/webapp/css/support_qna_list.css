@@ -39,5 +39,43 @@ body {
     padding: 5px;
 }
 
+.board-row.no-data {
+    width: 100%;
+    text-align: center;
+    color: #999;
+    padding: 15px;
+    font-size: 15px;
+}
 
+.mb-submit input[type=button],
+.mb-submit input[type=submit] {
+    width: 120px;
+    height: 40px;
+    background-color: #F88257;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
+.mb-submit input[type=button]:hover,
+.mb-submit input[type=submit]:hover {
+    background-color: #F88257;
+}
+
+.support-banner {
+    width: 100%;
+    text-align: center;
+    background-color: transparent;
+    margin-bottom: 30px;
+}
+
+.support-banner img {
+    max-width: 1000px;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
