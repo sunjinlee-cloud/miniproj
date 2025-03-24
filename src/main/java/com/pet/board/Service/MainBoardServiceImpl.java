@@ -15,6 +15,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.pet.apply.model.ApplyDTO;
 import com.pet.board.model.BoardDTO;
+import com.pet.board.model.BoardListDTO;
 import com.pet.board.model.MainBoardMapper;
 import com.pet.pet.model.PetDTO;
 import com.pet.users.model.UsersDTO;
@@ -164,9 +165,9 @@ public class MainBoardServiceImpl implements MainBoardService {
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		MainBoardMapper member = sql.getMapper(MainBoardMapper.class);
 		
-		ArrayList<BoardDTO> list = member.getBoardList();
+		ArrayList<BoardListDTO> list = member.getBoardLi();
 
-		for(BoardDTO li : list) {
+		for(BoardListDTO li : list) {
 			String petNum = li.getPetNum();
 			if(li.getBoardType().equals("U")){
 				li.setBoardType("구인중");

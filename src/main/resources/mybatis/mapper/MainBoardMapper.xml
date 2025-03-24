@@ -44,6 +44,52 @@
 		FROM PET
 	</select>
 	
+	    <resultMap id="BoardResultMap" type="com.pet.board.model.BoardListDTO">
+        <id property="boardNum" column="BOARD_NUM" />
+        <result property="boardType" column="BOARD_TYPE" />
+        <result property="boardTitle" column="BOARD_TITLE" />
+        <result property="regDate" column="REGDATE" />
+        <result property="boardContent" column	="BOARD_CONTENT" />
+        <result property="pay" column="PAY" />
+        <result property="jobTaker" column="JOB_TAKER" />
+        <result property="petNum" column="PET_NUM" />
+        <result property="reviewContent" column="REVIEW_CONTENT" />
+        <result property="reviewScore" column="REVIEW_SCORE" />
+        <result property="boardImage" column="BOARD_IMAGE" />
+        <result property="memNum" column="MEM_NUM" />
+        <result property="boardAddress" column="BOARD_ADDRESS" />
+
+        <!-- PET 테이블 관련 속성 추가 -->
+        <result property="petName" column="PET_NAME" />
+        <result property="petWeight" column="PET_WEIGHT" />
+        <result property="petGender" column="PET_GENDER" />
+        <result property="petAge" column="PET_AGE" />
+        <result property="petIntro" column="PET_INTRO" />
+        <result property="petPhoto" column="PET_PHOTO" />
+        <result property="petBreed" column="PET_BREED" />
+    </resultMap>
+
+    <select id="getBoardList" resultMap="BoardResultMap">
+        SELECT 
+            B.*, 
+            P.PET_NAME, 
+            P.PET_WEIGHT, 
+            P.PET_GENDER, 
+            P.PET_AGE, 
+            P.PET_INTRO, 
+            P.PET_PHOTO
+        FROM 
+            BOARD B
+        LEFT JOIN 
+            PET P 
+        ON 
+            B.PET_NUM = P.PET_NUM
+        WHERE 
+            B.BOARD_TYPE IS NOT NULL
+        ORDER BY 
+            B.REGDATE DESC
+    </select>
+
 
 	<!-- 글 상세 -->
 	<select id = "getBoard" resultType = "com.pet.board.model.BoardDTO">
