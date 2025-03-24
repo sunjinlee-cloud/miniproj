@@ -9,7 +9,7 @@
 <div class="nav">
     <a href="${pageContext.request.contextPath}/support/support_notice_list.jsp" class="navmenu">공지사항</a>
     <a href="${pageContext.request.contextPath}/support/support_faq.jsp" class="navmenu">FAQ</a>
-    <a href="${pageContext.request.contextPath}/support/support_qna_list.jsp" class="navmenu">1대1 문의</a>
+    <a href="${pageContext.request.contextPath}/support/qna_list.qna" class="navmenu">1대1 문의</a>
 </div>
     <article class="main-section">
         <div class="main-title">모르는개산책 회원님, 도움이 필요하신가요?</div>
