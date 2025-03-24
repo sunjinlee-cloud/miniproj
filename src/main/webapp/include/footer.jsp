@@ -37,14 +37,14 @@
     <footer>
         <div class="underminimenu">
             <ul style="">
-                <li><a href="">소개</a></li>|
-                <li><a href="">메인서비스</a></li>|
-                <li><a href="../support/support_notice_list.jsp">고객지원</a></li>|
-                <li><a href="../foot/terms.jsp">이용약관</a></li>|
+                <li><a href="">소개|</a></li>
+                <li><a href="">메인서비스|</a></li>
+                <li><a href="">고객지원|</a></li>
+                <li><a href="../foot/terms.jsp">이용약관|</a></li>
                 <li><a href="../foot/privacypolicy.jsp">개인정보처리방침</a></li>
             </ul>
             <p>(주)펫모시깽이 | 대표 박인욱 | 서울 강남구 테헤란로7길 7 (역삼동) 5층 | 대표 전화번호 : 010-1234-1234<br>
-                사업자 등록 번호 : 123-45-67890 | <a href="https://www.animals.or.kr/">동물자유연대</a> | <a href="https://www.qia.go.kr/">농림축산검역본부</a></p>
+                사업자 등록 번호 : 123-45-67890 | 동물자유연대 | 농림축산검역본부</p>
         </div>
         <div class="infoarea">
             <p>Copyright 2025 Pet © All rights reserved.</p>

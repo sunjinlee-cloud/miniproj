@@ -135,7 +135,8 @@ public class UserServiceImpl implements UsersService{
 			HttpSession session = request.getSession();
 //			request.setAttribute("mem_num", memNum);
 			session.setAttribute("UsersDTO", dto);
-			response.sendRedirect("../mainboard/mainboard_list.jsp");
+			//response.sendRedirect("../mainboard/mainboard_list.jsp");
+			response.sendRedirect("mypage.jsp");
 //			request.getRequestDispatcher("/mainboard/mainboard_list.jsp").forward(request, response);
 //			UsersDTO dtoo = (UsersDTO) session.getAttribute("UsersDTO");
 //			System.out.println(dtoo.getMemNum());
@@ -311,6 +312,23 @@ public class UserServiceImpl implements UsersService{
 			response.sendRedirect("users/mypage.jsp");
 		}
 	}
+
+	@Override
+	public void changeMemType(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		UsersDTO dto = (UsersDTO) session.getAttribute("UsersDTO");
+		String memType = dto.getMemType();
+		String memNum = dto.getMemNum();
+		System.out.println("유저이메일은: "+memNum);
+		System.out.println("유저타입은 : "+memType);
+		
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		UserMapper user = sql.getMapper(UserMapper.class);
+		
+		int result = user.changetype(memNum);
+		System.out.println("유저타입 변경됨? : "+result);
+	} 
 
 
 	

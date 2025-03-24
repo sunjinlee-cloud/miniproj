@@ -16,5 +16,5 @@ public interface UsersService {
 	void idcheck(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 	void phonecheck(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 	void logout(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException;
-
+	void changeMemType(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 }

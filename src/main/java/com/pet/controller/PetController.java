@@ -44,7 +44,6 @@ public class PetController extends HttpServlet {
 		
 		if(command.equals("/users/addPet.pet")) {
 			service.registerPet(request, response);
-			response.sendRedirect("mypage.jsp");
 		} 
 		
 	}
