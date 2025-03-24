@@ -293,6 +293,7 @@ input::placeholder {
     border-radius: 30px;
     border: 0.5px solid rgba(201, 201, 201, 0.377);
     /* box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1); */
+    margin-top: 10px;
 }
 
 .mb-petinfo table tr td input {
@@ -525,3 +526,85 @@ section {
     font-weight: bold;
     width: 70%;
 } */
+
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    padding: 25px 0;
+    background-color: #fff5f2;
+    border-bottom: 1px solid #F88257;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.navmenu {
+    padding: 10px 25px;
+    background-color: #ffffff;
+    border: 1px solid #F88257;
+    border-radius: 30px;
+    color: #F88257;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.navmenu:hover {
+    background-color: #F88257;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(248, 130, 87, 0.3);
+    transform: translateY(-3px);
+}
+
+.mb-submit {
+    display: flex;
+    justify-content: flex-end; /* ← 오른쪽 정렬, 중앙 정렬 시 center로 변경 가능 */
+    gap: 10px; /* 버튼 간 간격 */
+    margin-top: 30px;
+    padding-right: 10px;
+}
+
+.mb-submit input {
+    width: 120px;
+    height: 45px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #F88257;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 30px;
+    box-shadow: 0 2px 10px rgba(248, 130, 87, 0.3);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.mb-submit input:hover {
+    background-color: #f76c37;
+    transform: translateY(-2px);
+}
+
+.qna-submit-wrap {
+    display: flex;
+    justify-content: flex-end;  /* 중앙 정렬: center / 왼쪽 정렬: flex-start */
+    padding-top: 30px;
+    margin-top: 30px;
+    border-top: 1px solid #f8825715;
+}
+
+.qna-submit-btn {
+    padding: 12px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #F88257;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0 3px 10px rgba(248, 130, 87, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.qna-submit-btn:hover {
+    background-color: #f76c37;
+    transform: translateY(-2px);
+}

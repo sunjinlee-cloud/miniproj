@@ -1,7 +1,17 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
+<%
+    if (session.getAttribute("UsersDTO") == null) {
+%>
+<script>
+    alert('로그인이 필요한 서비스입니다');
+    location.href='<%= request.getContextPath() %>/users/login.jsp';
+</script>
+<%
+        return;
+    }
+%>
 
 <%@ include file="../include/header.jsp" %>
 
@@ -12,7 +22,11 @@
 
 <body>
 <section>
-
+<div class="nav">
+    <a href="${pageContext.request.contextPath}/support/support_notice_list.jsp" class="navmenu">공지사항</a>
+    <a href="${pageContext.request.contextPath}/support/support_faq.jsp" class="navmenu">FAQ</a>
+    <a href="${pageContext.request.contextPath}/support/support_qna_list.jsp" class="navmenu">1대1 문의</a>
+</div>
     <div class="container">
         <p class="qna">문의하기</p>
         <hr style="margin-bottom: 30px;">
@@ -53,16 +67,18 @@
                 </c:choose>
             </div>
 
-            <div class="mb-submit">
-                <c:choose>
-                    <c:when test="${not empty qna}">
-                        <input type="submit" value="수정">
-                    </c:when>
-                    <c:otherwise>
-                        <input type="submit" value="등록">
-                    </c:otherwise>
-                </c:choose>
-            </div>
+			<div class="qna-submit-wrap">
+    <c:choose>
+        <c:when test="${not empty qna}">
+            <button type="submit" class="qna-submit-btn">수정</button>
+        </c:when>
+        <c:otherwise>
+            <button type="submit" class="qna-submit-btn">등록</button>
+        </c:otherwise>
+    </c:choose>
+</div>
+			
+            
         </form>
     </div>
 </section>
