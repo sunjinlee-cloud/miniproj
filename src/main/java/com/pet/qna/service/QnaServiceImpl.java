@@ -56,7 +56,7 @@ public class QnaServiceImpl implements QnaService {
         }
     }
 
-    @Override  // 문의글 상세보기 (Read detail)
+    @Override  // 문의글 상세보기 (detail)
     public void getQnaDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         SqlSession sql = null;
         try {
@@ -126,11 +126,11 @@ public class QnaServiceImpl implements QnaService {
         }
     }
 
-    @Override  // 문의글 목록 조회 (List by user)
+    @Override  // 문의글 목록 조회 (List)
     public void getQnaList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         SqlSession sql = null;
         try {
-            // Get logged-in user's ID from session
+            
             UsersDTO user = (UsersDTO) request.getSession().getAttribute("UsersDTO");
             String memNum = (user != null) ? user.getMemNum() : null;
             sql = sqlSessionFactory.openSession(true);

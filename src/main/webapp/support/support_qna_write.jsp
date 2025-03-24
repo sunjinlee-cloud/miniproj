@@ -27,6 +27,9 @@
     <a href="${pageContext.request.contextPath}/support/support_faq.jsp" class="navmenu">FAQ</a>
     <a href="${pageContext.request.contextPath}/support/support_qna_list.jsp" class="navmenu">1대1 문의</a>
 </div>
+<div class="support-banner">
+    <img src="${pageContext.request.contextPath}/img/support_banner.jpg" alt="고객지원 배너">
+</div>
     <div class="container">
         <p class="qna">문의하기</p>
         <hr style="margin-bottom: 30px;">

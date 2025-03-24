@@ -74,8 +74,7 @@
             <a href="" class="faqcontent-right">o
             </a>
         </div>
-        
-        
+    </div>
     </div>
 
     <script>
