@@ -39,7 +39,7 @@
             <ul style="">
                 <li><a href="../Introduction.jsp">소개|</a></li>
                 <li><a href="../mainboard/mainboard_list.jsp">메인서비스|</a></li>
-                <li><a href="../support/support_notice_list.jsp">고객지원|</a></li>
+                <li><a href="${pageContext.request.contextPath}/support/notice_list.notice">고객지원|</a></li>
                 <li><a href="../foot/terms.jsp">이용약관|</a></li>
                 <li><a href="../foot/privacypolicy.jsp">개인정보처리방침</a></li>
             </ul>
