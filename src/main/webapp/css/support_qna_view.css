@@ -5,7 +5,7 @@
 }
 
 body {
-    
+    width: 1000px;
     margin: 0 auto;
 }
 
@@ -501,23 +501,23 @@ section {
     float: left;
 }
 
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
 .support-banner {
     width: 100%;
+    text-align: center;
+    background-color: transparent;
     margin-bottom: 30px;
 }
 
 .support-banner img {
+    max-width: 1000px;
     width: 100%;
     height: auto;
     display: block;
     margin: 0 auto;
 }
+
+
+
 
 /* 공지사항 글상세 */
 /* .qna-name > li:nth-child(1){

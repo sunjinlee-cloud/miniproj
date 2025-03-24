@@ -10,20 +10,18 @@ public class QnaDTO {
     private String qnaContent;
     private Date qnaDate;
     private String memNum;
-    private String qnaType;
     
     //기본 생성자 생성
     public QnaDTO() {}
     
     //전체 필드 생성자 생성
-    public QnaDTO(int qnaNum, String qnaTitle, String qnaContent, Date qnaDate, String memNum, String qnaType) {
+    public QnaDTO(int qnaNum, String qnaTitle, String qnaContent, Date qnaDate, String memNum) {
 		super();
 		this.qnaNum = qnaNum;
 		this.qnaTitle = qnaTitle;
 		this.qnaContent = qnaContent;
 		this.qnaDate = qnaDate;
 		this.memNum = memNum;
-		this.qnaType = qnaType;
 	}
     
 
@@ -75,16 +73,6 @@ public class QnaDTO {
 
 	public void setMemNum(String memNum) {
 		this.memNum = memNum;
-	}
-
-
-	public String getQnaType() {
-		return qnaType;
-	}
-
-
-	public void setQnaType(String qnaType) {
-		this.qnaType = qnaType;
 	}
 
 }
