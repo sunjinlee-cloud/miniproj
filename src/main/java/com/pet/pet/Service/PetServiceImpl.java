@@ -25,21 +25,18 @@ public class PetServiceImpl implements PetService {
 	public void registerPet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		System.out.println("들어옴?");
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		HttpSession session = request.getSession();
 		UsersDTO dto = (UsersDTO) session.getAttribute("UsersDTO");
 		
 		String memNum = dto.getMemNum();
-		System.out.println("DTO제대로 가져옴? 유저이메일 :"+memNum);
 		String memType = dto.getMemType();
 		String petName = request.getParameter("petName");
-		System.out.println("파라미터 제대로 받음? petName : "+petName);
 		String petPhoto = "사진을 업로드해주세요";
-		String petBreed = request.getParameter("petType");
+		String petBreed = request.getParameter("petBreed");
 		int petAge =  Integer.parseInt(request.getParameter("petAge"));
 		int petWeight = Integer.parseInt(request.getParameter("petWeight"));
-		String petGender = request.getParameter("gender");
+		String petGender = request.getParameter("petGender");
 		String petIsmain = request.getParameter("petIsmain");
 		String petIntro = request.getParameter("petIntro");
 		
@@ -49,19 +46,10 @@ public class PetServiceImpl implements PetService {
 		int petResult = pet.registerpet(petdto);
 		System.out.println("petResult는 : "+petResult);
 		
-		if (petResult == 1) {
-			response.setContentType("text/html; charSet=UTF-8;");
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println("alert('성공적으로 추가되었습니다.')");
-			out.println("</script>");
-		} else {
-			response.setContentType("text/html; charSet=UTF-8;");
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println("alert('오류로 인하여 추가에 실패하였습니다.')");
-			out.println("</script>");
-		}
+		response.setContentType("application/x-www-form-urlencoded; charset=UTF-8");
+		response.getWriter().write(petResult+"");
+		
+
 		sql.close();
 	}
 
