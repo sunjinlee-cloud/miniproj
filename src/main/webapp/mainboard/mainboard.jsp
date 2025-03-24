@@ -90,7 +90,7 @@
                                 </div>
                                 <div class="qna-right">
                                     <ul class="qna-top">
-                                        <li>${apply.memNum}</li>
+                                        <li><a href="../users/profilePage.users?mem_num=${apply.memNum}">${apply.memNum}</a></li>
                                         <li>${apply.applyDate}</li>
                                     </ul>
                                     <p>${apply.applyContent}</p>

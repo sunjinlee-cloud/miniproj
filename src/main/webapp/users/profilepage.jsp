@@ -106,7 +106,7 @@
             <div class="jobsTaken"> <!-- 맡은 건 내역 -->
                 <div class="jobsTakenTitle">
                     <div class="title">맡은 건 내역</div>
-                    <div class="takenListMore"><a href="mainboard_list.jsp?jobtaker=${requestScope.memNick}"><i class="bi bi-three-dots"></i></a></div>
+                    <div class="takenListMore"><a href="../mainboard/mainboard_list.jsp?jobtaker=${requestScope.memNick}"><i class="bi bi-three-dots"></i></a></div>
                 </div>
                 <div class="jobsTakenBoard">
                 	<c:forEach var="boardTitle" items="${requestScope.workList}">
@@ -120,7 +120,7 @@
             <div class="jobsGiven"> <!-- 글 쓴 내역-->
                 <div class="jobsGivenTitle">
                     <div class="title">작성 글 내역</div>
-                    <div class="givenListMore"><a href="mainboard_list.jsp?memnum=${requestScope.UsersProfileDTO.memNick}"><i class="bi bi-three-dots"></a></i></div>
+                    <div class="givenListMore"><a href="../mainboard/mainboard_list.jsp?memnum=${requestScope.UsersProfileDTO.memNick}"><i class="bi bi-three-dots"></a></i></div>
                 </div>
                 <div class="jobsGivenBoard">
                 	<c:forEach var="boardTitle" items="${writeList}">
