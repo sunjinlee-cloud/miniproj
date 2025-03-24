@@ -125,6 +125,7 @@ public class UserServiceImpl implements UsersService{
 //		UsersDTO dto = user.login(map);
 		
 		if (dto == null) {
+			System.out.println("asdfsa");
 			response.setContentType("text/html; charSet=UTF-8;");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
@@ -262,10 +263,10 @@ public class UserServiceImpl implements UsersService{
 		
 		
 		HttpSession session = request.getSession();
-		String memNum = (String) request.getAttribute("mem_num");
-//		System.out.println("받아온 파라미터 memnum: "+memNum);
+		String memNum = (String) request.getParameter("mem_num");
+		//System.out.println("받아온 파라미터 memnum: "+memNum);
 		UsersDTO dto = (UsersDTO) session.getAttribute("UsersDTO");
-//		System.out.println("dto: "+dto);
+		//System.out.println("dto: "+dto);
 		
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		UserMapper user = sql.getMapper(UserMapper.class);
@@ -303,7 +304,7 @@ public class UserServiceImpl implements UsersService{
 			out.println("<script>");
 			out.println("alert('정상적으로 로그아웃 되었습니다.')");
 			out.println("</script>");
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("users/login.jsp");
 		} else {
 			response.setContentType("text/html; charSet=UTF-8;");
 			PrintWriter out = response.getWriter();

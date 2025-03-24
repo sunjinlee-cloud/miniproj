@@ -160,7 +160,10 @@
             }
         }        
 
+        var searchBtn = document.querySeletor(".searchBtn");
+        var searchType = document.getElementById("searchType");
         
+        searchType.onclick()
 
 
         //구인완료인 경우 회색으로 보이게 하기
