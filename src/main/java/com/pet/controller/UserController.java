@@ -68,6 +68,10 @@ public class UserController extends HttpServlet {
 			service.delete(request, response);
 		} else if (command.equals("/users/logout.users")) {
 			service.logout(request, response);
+		} else if (command.equals("/support/logout.users")) {
+			service.logout(request, response);
+		} else if (command.equals("/mainboard/logout.users")) {
+			service.logout(request, response);
 		} else if (command.equals("/users/changememtype.users")) {
 			service.changeMemType(request, response);
 		}

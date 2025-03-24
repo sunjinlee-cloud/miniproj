@@ -40,15 +40,15 @@
             <!--  <li style="float: left;"><a href="${pageContext.request.contextPath}/mainboard/mainboard_list.jsp"><img src="../img/mainlogo.png" alt="logo" width="100px"></a></li> -->
             <c:choose>
 					<c:when test="${sessionScope.UsersDTO == null}">
-					<li style="float: left;"><a href="${pageContext.request.contextPath}/introduction.jsp"><img src="../img/mainlogo.png" alt="logo" width="100px"></a></li>
+					<li style="float: left;"><a href="${pageContext.request.contextPath}/Introduction.jsp"><img src="../img/mainlogo.png" alt="logo" width="100px"></a></li>
 						<li><a href="${pageContext.request.contextPath}/users/login.jsp">로그인</a></li>
 						<li><a href="${pageContext.request.contextPath}/users/join.jsp">회원가입</a></li>
 					</c:when>
 					<c:otherwise> 
-					<li style="float: left;"><a href="${pageContext.request.contextPath}/mainboard/mainboard_list.jsp"><img src="../img/mainlogo.png" alt="logo" width="100px"></a></li>
+					<li style="float: left;"><a href="${pageContext.request.contextPath}/mainboard/list.main"><img src="../img/mainlogo.png" alt="logo" width="100px"></a></li>
 						<li><a href="#" class="logout">로그아웃</a></li>
 						<li><a href="${pageContext.request.contextPath}/users/mypage.jsp">마이페이지</a></li>
-						<li><a href="${pageContext.request.contextPath}/support/support_notice_list.jsp">고객지원</a></li>
+						<li><a href="${pageContext.request.contextPath}/support/support_qna_list.jsp">고객지원</a></li>
 					</c:otherwise>
 			</c:choose>
         </ul>
@@ -62,7 +62,7 @@
             if (confirm("로그아웃 하시겠습니까?")) {
             	
                 //fetch("/users/logout.users");
-            	location.href="logout.users";
+            	location.href="${pageContext.request.contextPath}/users/login.jsp";
             }
         }
 
