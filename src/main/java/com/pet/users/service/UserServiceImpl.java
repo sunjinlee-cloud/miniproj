@@ -125,6 +125,7 @@ public class UserServiceImpl implements UsersService{
 //		UsersDTO dto = user.login(map);
 		
 		if (dto == null) {
+			System.out.println("asdfsa");
 			response.setContentType("text/html; charSet=UTF-8;");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
@@ -303,7 +304,7 @@ public class UserServiceImpl implements UsersService{
 			out.println("<script>");
 			out.println("alert('정상적으로 로그아웃 되었습니다.')");
 			out.println("</script>");
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("users/login.jsp");
 		} else {
 			response.setContentType("text/html; charSet=UTF-8;");
 			PrintWriter out = response.getWriter();

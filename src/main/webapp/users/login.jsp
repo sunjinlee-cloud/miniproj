@@ -67,10 +67,9 @@
             if (window.event.keyCode == 13 && id.value != "" && pw.value != "") {
                 var regId = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
                 if (!regId.test(id.value)) {
-                    alert('아이디를 이메일 형식으로 입력해 주세요.55')
+                    alert('아이디를 이메일 형식으로 입력해 주세요.')
                     return;
                 }
-                alert("?") //엔터치고 로그인 기능 
             }
         }
 
