@@ -3,11 +3,11 @@
 
 	<%@ include file="../include/header.jsp" %>
 
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/support_notice_list.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/support_faq.css">
 
 <body>
 <div class="nav">
-    <a href="${pageContext.request.contextPath}/support/support_notice_list.jsp" class="navmenu">공지사항</a>
+    <a href="${pageContext.request.contextPath}/support/notice_list.notice" class="navmenu">공지사항</a>
     <a href="${pageContext.request.contextPath}/support/support_faq.jsp" class="navmenu">FAQ</a>
     <a href="${pageContext.request.contextPath}/support/qna_list.qna" class="navmenu">1대1 문의</a>
 </div>

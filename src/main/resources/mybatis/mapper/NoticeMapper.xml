@@ -1,8 +1,45 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.pet.board.model.NoticeMapper">
-<!-- namespace : 구현할 인터페이스의 풀패키지명을 포함한 명칭이 들어감 -->
+<!-- namespace에는 구현할 인터페이스의 풀 패키지 명을 넣어줘야 한다. -->
+<mapper namespace="com.pet.notice.model.NoticeMapper">
+    
+    <insert id="insertNotice" parameterType="com.pet.notice.model.NoticeDTO">
+        INSERT INTO NOTICE (NOTICE_NUM, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE, MEM_NUM)
+        VALUES (NOTICE_SEQ.NEXTVAL, #{noticeTitle}, #{noticeContent}, SYSDATE, #{memNum})
+    </insert>
 
+    
+    <select id="getNoticeDetail" parameterType="int" resultType="com.pet.notice.model.NoticeDTO">
+        SELECT NOTICE_NUM, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE, MEM_NUM 
+        FROM NOTICE
+        WHERE NOTICE_NUM = #{noticeNum}
+    </select>
+
+   
+    <update id="updateNotice" parameterType="com.pet.notice.model.NoticeDTO">
+        UPDATE NOTICE 
+        SET NOTICE_TITLE = #{noticeTitle}, NOTICE_CONTENT = #{noticeContent}
+        WHERE NOTICE_NUM = #{noticeNum}
+    </update>
+
+    
+    <delete id="deleteNotice" parameterType="int">
+        DELETE FROM NOTICE 
+        WHERE NOTICE_NUM = #{noticeNum}
+    </delete>
+
+   
+    <select id="getNoticeList" parameterType="string" resultType="com.pet.notice.model.NoticeDTO">
+        SELECT NOTICE_NUM, NOTICE_TITLE, NOTICE_DATE 
+        FROM NOTICE 
+        <where>
+        <if test="memNum != null and memNum != ''">
+            MEM_NUM = #{memNum, jdbcType=VARCHAR}
+        </if>
+    </where>
+        ORDER BY NOTICE_NUM DESC
+    </select>
 </mapper>
