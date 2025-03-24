@@ -119,9 +119,9 @@
                     <div class="cardMiddle">
                         <div class="cardMiddleUpper"><h4>${list.boardTitle}</h4></div>
                         <div class="tagBox">
-                            <div class="tag tags1">#순딩이</div>
-                            <div class="tag tags2">#1시간정도 원해요</div>
-                            <div class="tag tags3">#주 2회 좋아요</div>
+                            <div class="tag tags1">${list.boardBreed }</div>
+                            <div class="tag tags2">${list.boardGender }</div>
+                            <div class="tag tags3">${list.boardWeight }</div>
                         </div>
                     </div>
                     <div class="cardRight">
