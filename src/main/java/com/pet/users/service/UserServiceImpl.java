@@ -263,10 +263,10 @@ public class UserServiceImpl implements UsersService{
 		
 		
 		HttpSession session = request.getSession();
-		String memNum = (String) request.getAttribute("mem_num");
-//		System.out.println("받아온 파라미터 memnum: "+memNum);
+		String memNum = (String) request.getParameter("mem_num");
+		//System.out.println("받아온 파라미터 memnum: "+memNum);
 		UsersDTO dto = (UsersDTO) session.getAttribute("UsersDTO");
-//		System.out.println("dto: "+dto);
+		//System.out.println("dto: "+dto);
 		
 		SqlSession sql = sqlSessionFactory.openSession(true);
 		UserMapper user = sql.getMapper(UserMapper.class);
