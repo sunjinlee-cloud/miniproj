@@ -135,7 +135,7 @@ public class UserServiceImpl implements UsersService{
 			HttpSession session = request.getSession();
 //			request.setAttribute("mem_num", memNum);
 			session.setAttribute("UsersDTO", dto);
-			response.sendRedirect("../mainboard/mainboard_list.jsp");
+			response.sendRedirect("/unknownpetwalk/mainboard/list.main");
 //			request.getRequestDispatcher("/mainboard/mainboard_list.jsp").forward(request, response);
 //			UsersDTO dtoo = (UsersDTO) session.getAttribute("UsersDTO");
 //			System.out.println(dtoo.getMemNum());

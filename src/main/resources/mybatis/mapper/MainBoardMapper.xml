@@ -78,6 +78,11 @@
 		VALUES(APPLY_SEQ.NEXTVAL, #{memNum}, #{applyContent}, CURRENT_TIMESTAMP, #{boardNum})
 	</insert> 
 	
+	<delete id = "applyDelete">
+		DELETE APPLY
+		WHERE APPLY_NUM = #{applyNum}
+	</delete>
+	
 	<!-- 글 지우기 -->
 	<delete id = "deleteBoard">
 		DELETE BOARD

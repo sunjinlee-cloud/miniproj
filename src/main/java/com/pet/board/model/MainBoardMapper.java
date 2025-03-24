@@ -26,6 +26,9 @@ public interface MainBoardMapper {
 	//댓글보기
 	ArrayList <ApplyDTO> getApply(String boardNum);
 	
+	//댓글 삭제
+	void applyDelete(String applyNum);
+	
 	//댓글 쓰기
 	void setApply(ApplyDTO dto);
 	

@@ -1,13 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+        <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<%@ include file="../include/header.jsp" %>
-<link rel="stylesheet" href="../css/support_qna_write.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
-    <style>*{font-family: "Poor Story", system-ui;}</style>
+            <%@ include file="../include/header.jsp" %>
+                <link rel="stylesheet" href="../css/support_qna_write.css">
+                <link rel="preconnect" href="https://fonts.googleapis.com">
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+                <style>
+                    * {
+                        font-family: "Poor Story", system-ui;
+                    }
+                </style>
                 <section>
 
 
@@ -30,7 +34,7 @@
                         <div class="mb-left">
                             <div class="mb-petpic">
                                 <!-- PET_NUM으로 조회된 PET_PHOTO -->
-                                <img src="img/intro-petwalkswitch-02.png" alt="사진" width="100%" height="100%">
+                                <img src="../img/intro-petwalkswitch-02.png" alt="사진" width="100%" height="100%">
                             </div>
                         </div>
                         <div class="mb-petinfo">
@@ -59,14 +63,14 @@
 
                     </div>
                     <hr>
-                    <div style = "overflow:hidden;">
+                    <c:if test="${lo.memNum == board.memNum}">
                         <form action="delete.main" method="post" style="float:right; width: 100px;">
                             <input type="hidden" name="boardNum" value=${board.boardNum}>
                             <div class="mb-submit">
                                 <input type="submit" value="삭제" style="width: 80%;">
                             </div>
                         </form>
-                        <form action="modify.main" method="post"  style="float:right; width: 100px;"    >
+                        <form action="modify.main" method="post" style="float:right; width: 100px;">
                             <input type="hidden" name="boardNum" value=${board.boardNum}>
                             <div class="mb-submit">
                                 <input type="submit" value="수정" style="width: 80%;">
@@ -75,28 +79,39 @@
 
 
                         </div>
-                    <c:forEach var="apply" items="${apply}">
-                        <div class="qna-box">
-                            <div class="qna-left">
-                                <div class="qna-pfimg">
+                    </c:if>
+
+                    <div>
+                        <c:forEach var="apply" items="${apply}">
+                            <div class="qna-box">
+                                <div class="qna-left">
+                                    <div class="qna-pfimg">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="qna-right">
-                                <ul class="qna-top">
-                                    <li>${apply.memNum}</li>
-                                    <li>${apply.applyDate}</li>
-                                </ul>
-                                <p>${apply.applyContent}</p>
-                                <div class="qna-btn">
-                                    <div>
-                                        <button type="button">수정</button>
-                                        <input type="hidden" name="applyNum" value="${apply.applyNum}"></input>
-                                        <button type="button" class="applyDelBtn">삭제</button>
+                                <div class="qna-right">
+                                    <ul class="qna-top">
+                                        <li>${apply.memNum}</li>
+                                        <li>${apply.applyDate}</li>
+                                    </ul>
+                                    <p>${apply.applyContent}</p>
+                                    <div class="qna-btn">
+                                        <c:if test="${lo.memNum == apply.memNum}">
+
+                                            <div>
+                                                <!-- <button type="button">수정</button> -->
+                                                <form action="applydelete.main">
+                                                    <input type="hidden" name="applyNum"
+                                                        value="${apply.applyNum}"></input>
+                                                    <input type="submit" class="applyDelBtn" value="삭제"
+                                                        style="cursor: pointer; color: white ;padding: 5px 10px; border-radius: 10px; background-color: rgb(248, 130, 87) ;"></button>
+                                                </form>
+                                            </div>
+                                        </c:if>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </c:forEach>
+                        </c:forEach>
+                    </div>
 
                     <form action="boardregist.main" method="post">
                         <input type="hidden" name="boardNum" value="${board.boardNum}">
@@ -105,7 +120,7 @@
                             <input type="submit" value="등록">
                         </div>
                     </form>
-
+                    </div>
 
                 </section>
 
@@ -123,11 +138,12 @@
                     var petAge = document.querySelector('.pet-age');
                     var petWeight = document.querySelector('.pet-weight');
                     var submit = document.querySelector('.mb-submit');
-
-
+                    var reply = document.querySelector('.qna-reply');
 
                     //태그 숨기기기
                     (function () {
+
+
                         if (petGender.innerHTML == "#아") {
 
                             petGender.style.display = "none";
@@ -140,7 +156,7 @@
                         }
                     })();
 
-
+                    
                     //댓글 삭제
                     submit.onclick = function () {
                         console.log(event.target.tagName);
@@ -152,8 +168,18 @@
                         }
 
                     }
+                    reply.onclick = function () {
+                        console.log(event.target.tagName);
+                        if (event.target.tagName != "INPUT") return;
+                        if (confirm('삭제 하시겠습니까?')) {
+                            alert('삭제 되었습니다.');
+                        } else {
+                            event.preventDefault();
+                        }
+
+                    }
 
 
                 </script>
-                
-<%@ include file="../include/footer.jsp" %>
+
+                <%@ include file="../include/footer.jsp" %>
