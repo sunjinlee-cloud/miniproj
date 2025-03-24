@@ -22,6 +22,11 @@
 
 <body>
 <section>
+<div class="nav">
+    <a href="${pageContext.request.contextPath}/support/support_notice_list.jsp" class="navmenu">공지사항</a>
+    <a href="${pageContext.request.contextPath}/support/support_faq.jsp" class="navmenu">FAQ</a>
+    <a href="${pageContext.request.contextPath}/support/support_qna_list.jsp" class="navmenu">1대1 문의</a>
+</div>
 <div class="support-banner">
     <img src="${pageContext.request.contextPath}/img/support_banner.jpg" alt="고객지원 배너">
 </div>
@@ -39,11 +44,7 @@
             <li class="qna-li">
                 <c:out value="${qna.qnaDate}" />
             </li>
-            <li class="qna-fo">문의유형</li>
-            <li class="qna-li">
-                기타
-                
-            </li>
+          
         </ul>
 
         <hr>

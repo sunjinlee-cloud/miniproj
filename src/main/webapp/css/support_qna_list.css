@@ -58,6 +58,7 @@ body {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-top: 10px;
 }
 
 .mb-submit input[type=button]:hover,
@@ -78,4 +79,33 @@ body {
     height: auto;
     display: block;
     margin: 0 auto;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    padding: 25px 0;
+    background-color: #fff5f2;
+    border-bottom: 1px solid #F88257;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.navmenu {
+    padding: 10px 25px;
+    background-color: #ffffff;
+    border: 1px solid #F88257;
+    border-radius: 30px;
+    color: #F88257;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.navmenu:hover {
+    background-color: #F88257;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(248, 130, 87, 0.3);
+    transform: translateY(-3px);
 }
