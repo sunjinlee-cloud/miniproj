@@ -30,7 +30,7 @@ public interface UserMapper {
 	
 	Integer delete(String memNum);
 
-	int userTypeChange(String memNum);
+	int changetype(String memNum);
 	
 	
 

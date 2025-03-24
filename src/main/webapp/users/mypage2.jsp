@@ -18,7 +18,7 @@
 <body>
 
     <div class="Mypage">
-        <form action="modify.users" method="post" onsubmit="return validateForm();">
+        <form action="modify.users" method="post" onsubmit="return validateForm()">
             <div class="box">
                 <div class="profile-img">
                         <img src="../img/free-icon-user-847969.png"  alt="프로필이미지">
@@ -176,16 +176,17 @@
 
         var modal = document.getElementById("exampleModal");
     	var addForm = document.getElementById("addPet");
-    	
     	modal.addEventListener('shown.bs.modal', function() {
     		addForm.reset();
+    	 	console.log(modal);
+    	 	console.log("그만하고싶다");
     	});
-		
+
         document.addEventListener('DOMContentLoaded', function() {
             var addPet = document.querySelector(".addPet");
-            
             addPet.onclick = function() {
-                
+                console.log("mypage2");
+
                 var petName = document.querySelector(".petName").value;
                 var petPhoto = "사진을 업로드해주세요";
                 var petBreed = document.querySelector(".petType").value;
@@ -215,14 +216,7 @@
                     } else {
                         alert("다시 시도해 주세요.");
                         }
-		    	});
-                
-                
-                fetch("changememtype.users", {
-                	method: "post",
-                	headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                	body: "key="+123
-                })
+		    	})
             }
         });
 
@@ -230,14 +224,15 @@
         function validateForm() {
 	        var password = document.getElementById("password").value;
 	        var passwordCheck = document.getElementById("passwordCheck").value;
+	        var errorMessage = document.getElementById("error-message");
 	
 	        if (password.length < 3) {
-	            alert("비밀번호는 최소 4자 이상이어야 합니다.");
+	            errorMessage.innerText = "비밀번호는 최소 4자 이상이어야 합니다.";
 	            return false;
 	        }
 	        
 	        if (password !== passwordCheck) {
-	            alert("비밀번호가 일치하지 않습니다.");
+	            errorMessage.innerText = "비밀번호가 일치하지 않습니다.";
 	            return false;
 	        }
 	

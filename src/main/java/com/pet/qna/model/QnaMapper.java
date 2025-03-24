@@ -7,5 +7,5 @@ public interface QnaMapper {
     QnaDTO getQnaDetail(int qnaNum);
     int updateQna(QnaDTO dto);
     int deleteQna(int qnaNum);
-    List<QnaDTO> getQnaList();
+    List<QnaDTO> getQnaList(String memNum);
 }

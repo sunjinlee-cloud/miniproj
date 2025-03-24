@@ -66,8 +66,8 @@
 		INSERT INTO PET (PET_NUM, PET_NAME, PET_PHOTO, PET_BREED, PET_GENDER, PET_WEIGHT, PET_AGE, PET_ISMAIN, PET_INTRO, PET_NUM) VALUES(pet_seq.nextval,#{petName}, #{petPhoto}, #{petBreed}, #{gender}, #{petWeight}, #{petAge}, #{petIsmain}, #{petIntro}, #{memNum})
 	</insert>
 
-	<update id="userTypeChange" parameterType="string">
-		UPDATE MEMBER SET MEM_TYPE='U' WHERE MEM_NUM=#{memNum};
+	<update id="changetype" parameterType="string">
+		UPDATE MEMBER SET MEM_TYPE='U' WHERE MEM_NUM=#{memNum}
 	</update>
 
 

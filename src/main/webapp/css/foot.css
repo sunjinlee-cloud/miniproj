@@ -1,0 +1,31 @@
+body {
+    background-color: #f882570e;
+}
+
+section.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+
+.terms-box {
+    padding: 20px;
+    line-height: 1.8;
+    font-size: 15px;
+    color: #333;
+}
+
+.terms-box h3 {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.terms-box p,
+.terms-box ul {
+    margin-left: 10px;
+    margin-bottom: 10px;
+}

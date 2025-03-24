@@ -12,171 +12,136 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.pet.qna.model.QnaDTO;
 import com.pet.qna.model.QnaMapper;
+import com.pet.users.model.UsersDTO;
 import com.pet.util.mybatis.MybatisUtil;
 
 public class QnaServiceImpl implements QnaService {
+    private SqlSessionFactory sqlSessionFactory = MybatisUtil.getSqlSessionFactory();
 
-	//sqlSessionFactory
-	private  SqlSessionFactory sqlSessionFactory = MybatisUtil.getSqlSessionFactory();
+    @Override  // 문의글 등록 (Create)
+    public void insertQna(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        SqlSession sql = null;
+        try {
+            
+            String qnaTitle = request.getParameter("qnaTitle");
+            String qnaContent = request.getParameter("qnaContent");
+            
+            UsersDTO user = (UsersDTO) request.getSession().getAttribute("UsersDTO");
+            String memNum = (user != null) ? user.getMemNum() : null;
+            if (memNum == null) {
+                
+                throw new Exception("로그인이 필요한 서비스 입니다.");
+            }
 
-	@Override
-	public void insertQna(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            sql = sqlSessionFactory.openSession(true);
+            QnaMapper qnaMapper = sql.getMapper(QnaMapper.class);
+           
+            QnaDTO dto = new QnaDTO();
+            dto.setQnaTitle(qnaTitle);
+            dto.setQnaContent(qnaContent);
+            dto.setMemNum(memNum);
+            int result = qnaMapper.insertQna(dto);
 
-		SqlSession sql = null;
+            if (result > 0) {
+                System.out.println("QNA 등록 성공!");
+            } else {
+                System.out.println("QNA 등록 실패!");
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("error", "QNA 등록 중 오류 발생: " + e.getMessage());
+        } finally {
+            if (sql != null) sql.close();
+        }
+    }
 
-		try {
-			String qnaTitle = request.getParameter("qnaTitle");
-			String qnaContent = request.getParameter("qnaContent");
-			String memNum = request.getParameter("memNum");
-			String qnaType = request.getParameter("qnaType");
+    @Override  // 문의글 상세보기 (Read detail)
+    public void getQnaDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        SqlSession sql = null;
+        try {
+            int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
+            sql = sqlSessionFactory.openSession(true);
+            QnaMapper qnaMapper = sql.getMapper(QnaMapper.class);
+            QnaDTO dto = qnaMapper.getQnaDetail(qnaNum);
+            request.setAttribute("qna", dto);
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("error", "QNA 상세보기 중 오류 발생");
+        } finally {
+            if (sql != null) sql.close();
+        }
+    }
 
-			System.out.println(qnaTitle);
-			System.out.println(qnaContent);
-			System.out.println(memNum);
-			System.out.println(qnaType);
+    @Override  // 문의글 수정 (Update)
+    public void updateQna(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        SqlSession sql = null;
+        try {
+            int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
+            String qnaTitle = request.getParameter("qnaTitle");
+            String qnaContent = request.getParameter("qnaContent");
 
-			sql = sqlSessionFactory.openSession(true);
-			QnaMapper qna = sql.getMapper(QnaMapper.class);
+            sql = sqlSessionFactory.openSession(true);
+            QnaMapper qnaMapper = sql.getMapper(QnaMapper.class);
+            QnaDTO dto = new QnaDTO();
+            dto.setQnaNum(qnaNum);
+            dto.setQnaTitle(qnaTitle);
+            dto.setQnaContent(qnaContent);
+            int result = qnaMapper.updateQna(dto);
 
-			QnaDTO dto = new QnaDTO();
-			dto.setQnaTitle(qnaTitle);
-			dto.setQnaContent(qnaContent);
-			dto.setMemNum(memNum);
-			dto.setQnaType(qnaType);
+            if (result > 0) {
+                System.out.println("QNA 수정 성공!");
+            } else {
+                System.out.println("QNA 수정 실패!");
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("error", "QNA 수정 중 오류 발생");
+        } finally {
+            if (sql != null) sql.close();
+        }
+    }
 
-			int result = qna.insertQna(dto);
+    @Override  // 문의글 삭제 (Delete)
+    public void deleteQna(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        SqlSession sql = null;
+        try {
+            int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
+            sql = sqlSessionFactory.openSession(true);
+            QnaMapper qnaMapper = sql.getMapper(QnaMapper.class);
+            int result = qnaMapper.deleteQna(qnaNum);
 
-			if (result > 0) {
-				System.out.println("QNA 등록 성공!");
-			} else {
-				System.out.println("QNA 등록 실패!");
-			}
+            if (result > 0) {
+                System.out.println("QNA 삭제 성공!");
+            } else {
+                System.out.println("QNA 삭제 실패!");
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("error", "QNA 삭제 중 오류 발생");
+        } finally {
+            if (sql != null) sql.close();
+        }
+    }
 
-			//response.sendRedirect("support/qna_list.qna");
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			request.setAttribute("error", "QNA 등록 중 오류 발생");
-		} finally {
-			if (sql != null) sql.close();
-		}
-	}
-
-
-
-	@Override
-	public void getQnaDetail(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		SqlSession sql = null;
-
-		try {
-			int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
-
-			sql = sqlSessionFactory.openSession(true);
-			QnaMapper qnaMapper = sql.getMapper(QnaMapper.class);
-
-			QnaDTO dto = qnaMapper.getQnaDetail(qnaNum);
-			request.setAttribute("dto", dto);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			request.setAttribute("error", "QNA 상세보기 중 오류 발생");
-		} finally {
-			if (sql != null) sql.close();
-		}
-	}
-
-	@Override
-	public void updateQna(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		SqlSession sql = null;
-
-		try {
-			int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
-			String qnaTitle = request.getParameter("qnaTitle");
-			String qnaContent = request.getParameter("qnaContent");
-			String qnaType = request.getParameter("qnaType");
-
-			sql = sqlSessionFactory.openSession(true);
-			QnaMapper qnaMapper = sql.getMapper(QnaMapper.class);
-
-			QnaDTO dto = new QnaDTO();
-			dto.setQnaNum(qnaNum);
-			dto.setQnaTitle(qnaTitle);
-			dto.setQnaContent(qnaContent);
-			dto.setQnaType(qnaType);
-
-			int result = qnaMapper.updateQna(dto);
-
-			if (result > 0) {
-				System.out.println("QNA 수정 성공!");
-			} else {
-				System.out.println("QNA 수정 실패!");
-			}
-
-			response.sendRedirect("detail.qna?qnaNum=" + qnaNum);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			request.setAttribute("error", "QNA 수정 중 오류 발생");
-		} finally {
-			if (sql != null) sql.close();
-		}
-	}
-
-	@Override
-	public void deleteQna(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		SqlSession sql = null;
-
-		try {
-			int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
-
-			sql = sqlSessionFactory.openSession(true);
-			QnaMapper qnaMapper = sql.getMapper(QnaMapper.class);
-
-			int result = qnaMapper.deleteQna(qnaNum);
-
-			if (result > 0) {
-				System.out.println("QNA 삭제 성공!");
-			} else {
-				System.out.println("QNA 삭제 실패!");
-			}
-
-			response.sendRedirect(request.getContextPath() + "/support/qna_list.qna");
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			request.setAttribute("error", "QNA 삭제 중 오류 발생");
-		} finally {
-			if (sql != null) sql.close();
-		}
-	}
-
-	@Override
-	public void getQnaList(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		SqlSession sql = null;
-
-		try {
-			sql = sqlSessionFactory.openSession(true);
-			QnaMapper qnaMapper = sql.getMapper(QnaMapper.class);
-
-			List<QnaDTO> qnaList = qnaMapper.getQnaList();
-			request.setAttribute("qnaList", qnaList);
-
-			//request.getRequestDispatcher("/support/support_qna_list.jsp").forward(request, response);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			request.setAttribute("error", "QNA 리스트 조회 중 오류 발생");
-		} finally {
-			if (sql != null) sql.close();
-		}
-	}
-
+    @Override  // 문의글 목록 조회 (List by user)
+    public void getQnaList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        SqlSession sql = null;
+        try {
+            // Get logged-in user's ID from session
+            UsersDTO user = (UsersDTO) request.getSession().getAttribute("UsersDTO");
+            String memNum = (user != null) ? user.getMemNum() : null;
+            sql = sqlSessionFactory.openSession(true);
+            QnaMapper qnaMapper = sql.getMapper(QnaMapper.class);
+            List<QnaDTO> qnaList = qnaMapper.getQnaList(memNum);
+            request.setAttribute("qnaList", qnaList);
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("error", "QNA 리스트 조회 중 오류 발생");
+        } finally {
+            if (sql != null) sql.close();
+        }
+    }
 }
